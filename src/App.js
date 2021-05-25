@@ -3,10 +3,10 @@ import {
     IfFirebaseAuthed,
     IfFirebaseUnAuthed
 } from "@react-firebase/auth";
-import PageLogin from "./src/pages/ChrisLoginPage";
-import PageChat from "./src/pages/ChatPage";
+import PageLogin from "./pages/ChrisLoginPage";
+import PageChat from "./pages/ChatPage";
 
-import "./styles.css";
+// import "./styles.css";
 
 export default function App() {
     return (

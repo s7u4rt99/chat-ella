@@ -5,9 +5,11 @@ function Chat() {
         <>
             <ul id="messages"></ul>
             <span id="notifyTyping"></span>
-            <form id="form" action="" onSubmit={submitFunction}>
+            {/*onSubmit={submitFunction}*/}
+            <form id="form" action="" >
                 <input type="hidden" id="user" value=""/>
-                <input id="m" autoComplete="off" onKeyUp={notifyTyping} placeholder="Type your message here.."/>
+                {/*onKeyUp={notifyTyping}*/}
+                <input id="m" autoComplete="off" placeholder="Type your message here.."/>
                 <input type="submit" id="button" value="Send"/>
             </form>
         </>
