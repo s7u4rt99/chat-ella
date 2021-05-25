@@ -1,0 +1,21 @@
+{
+  "name": "Chatella",
+  "version": "1.0.0",
+  "description": "Orbital Project",
+  "main": "index.js",
+  "repository": "https://github.com/s7u4rt99/chat-ella.git",
+  "author": "Stuart Long",
+  "license": "MIT",
+  "dependencies": {
+    "@firebase/app": "0.6.22",
+    "@firebase/auth": "0.16.6",
+    "@material-ui/core": "4.11.4",
+    "@material-ui/icons": "4.11.2",
+    "@react-firebase/auth": "^0.2.10",
+    "firebase": "^8.6.2",
+    "lodash": "4.17.21",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "4.0.0"
+  }
+}
