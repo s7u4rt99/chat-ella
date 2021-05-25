@@ -1,10 +1,11 @@
-import {submitFunction, notifyTyping } from "../../pages/chat";
+// import {submitFunction, notifyTyping } from "../../pages/chat";
+import "../style.css";
 
 function Chat() {
     return (
         <>
-            <ul id="messages"></ul>
-            <span id="notifyTyping"></span>
+            <ul id="messages"/>
+            <span id="notifyTyping"/>
             {/*onSubmit={submitFunction}*/}
             <form id="form" action="" >
                 <input type="hidden" id="user" value=""/>

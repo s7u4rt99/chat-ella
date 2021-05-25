@@ -1,5 +1,5 @@
 import { Button } from "@material-ui/core";
-import firebase from "firebase/app";
+// import firebase from "firebase/app";
 import { FirebaseAuthConsumer } from "@react-firebase/auth";
 
 function PageLogin() {

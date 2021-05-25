@@ -3,10 +3,10 @@ import {
     IfFirebaseAuthed,
     IfFirebaseUnAuthed
 } from "@react-firebase/auth";
-import PageLogin from "./pages/ChrisLoginPage";
+import PageLogin from "./pages/LoginPage";
 import PageChat from "./pages/ChatPage";
 
-// import "./styles.css";
+// import "./pages/style.css";
 
 export default function App() {
     return (
@@ -16,7 +16,7 @@ export default function App() {
                     <PageChat/>
                 </IfFirebaseAuthed>
                 <IfFirebaseUnAuthed>
-                    <PageLogin />
+                    <PageLogin st/>
                 </IfFirebaseUnAuthed>
             </FirebaseAuthConsumer>
         </div>

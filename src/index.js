@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
+// import CssBaseline from "@material-ui/core/CssBaseline";
 import { FirebaseAuthProvider } from "@react-firebase/auth";
+
 
 // The following 2 imports differ from the website's guide a little
 // You need to install both @firebase/app and @firebase/auth
@@ -16,10 +17,12 @@ import App from "./App";
 
 const rootElement = document.getElementById("root");
 
+
 ReactDOM.render(
     <StrictMode>
-        <CssBaseline />
+        {/*<CssBaseline />*/}
         <FirebaseAuthProvider {...config} firebase={firebase}>
+            {/*<CssBaseline />*/}
             <App />
         </FirebaseAuthProvider>
     </StrictMode>,
