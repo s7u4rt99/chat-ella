@@ -1,10 +1,14 @@
 // this is the file for the logic behind the chat app
 
+import {io} from "socket.io-client";
+// <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 var socket = io();
 var allChatMessages = [];
 var chatNotificationCount = [];
 var myUser = {};
 var myFriend = {};
+var $ = require( "jquery" );
 
 // Document Ready function called automatically on page load
 $(document).ready(function(){
@@ -15,12 +19,12 @@ $(document).ready(function(){
 function loginMe() {
 
     var person = prompt("Please enter your name:", "Stuart/ZhengLin");
-    if (/([^\s])/.test(person) && person != null && person != "") {
+    if (/([^\s])/.test(person) && person != null && person !== "") {
         //$('#user').val(person);
         socket.emit('newUser', person);
         document.title = person;
     } else {
-        location.reload();
+        window.location.reload();
     }
 }
 
@@ -29,14 +33,14 @@ export function submitFunction() {
     var message = {};
     const text = $('#m').val();
 
-    if(text != '') {
+    if(text !== '') {
         message.text = text;
         message.sender = myUser.id;
         message.receiver = myFriend.id;
 
         $('#messages').append('<li class="chatMessageRight">' + message.text + '</li>');
 
-        if(allChatMessages[myFriend.id] != undefined) {
+        if(allChatMessages[myFriend.id] !== undefined) {
             allChatMessages[myFriend.id].push(message);
         } else {
             allChatMessages[myFriend.id] = new Array(message);
@@ -57,23 +61,23 @@ export function notifyTyping() {
 function loadChatBox(messages) {
     $('#messages').html('');
     messages.forEach(function(message){
-        var cssClass = (message.sender == myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
+        var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
         $('#messages').append('<li class="' + cssClass + '">' + message.text + '</li>');
     });
 }
 
 // Append a single chant message to the chatbox
 function appendChatMessage(message) {
-    if(message.receiver == myUser.id && message.sender == myFriend.id) {
+    if(message.receiver === myUser.id && message.sender === myFriend.id) {
         playNewMessageAudio();
-        var cssClass = (message.sender == myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
+        var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
         $('#messages').append('<li class="' + cssClass + '">' + message.text + '</li>');
     } else {
         playNewMessageNotificationAudio();
         updateChatNotificationCount(message.sender);
     }
 
-    if(allChatMessages[message.sender] != undefined) {
+    if(allChatMessages[message.sender] !== undefined) {
         allChatMessages[message.sender].push(message);
     } else {
         allChatMessages[message.sender] = new Array(message);
@@ -92,7 +96,7 @@ function playNewMessageNotificationAudio() {
 
 // Function to update chat notifocation count
 function updateChatNotificationCount(userId) {
-    var count = (chatNotificationCount[userId] == undefined) ? 1 : chatNotificationCount[userId] + 1;
+    var count = (chatNotificationCount[userId] === undefined) ? 1 : chatNotificationCount[userId] + 1;
     chatNotificationCount[userId] = count;
     $('#' + userId + ' label.chatNotificationCount').html(count);
     $('#' + userId + ' label.chatNotificationCount').show();
@@ -121,7 +125,7 @@ function selectUerChatBox(element, userId, userName) {
     clearChatNotificationCount(userId);
 
     // load all chat message for selected user
-    if(allChatMessages[userId] != undefined) {
+    if(allChatMessages[userId] !== undefined) {
         loadChatBox(allChatMessages[userId]);
     } else {
         $('#messages').html('');
@@ -149,7 +153,7 @@ socket.on('onlineUsers', function(onlineUsers){
 
     if(onlineUsers.length == 2) {
         onlineUsers.forEach(function(user){
-            if(myUser.id != user.id){
+            if(myUser.id !== user.id){
                 myFriend.id = user.id;
                 myFriend.name = user.name;
                 $('#form').show();
@@ -159,8 +163,8 @@ socket.on('onlineUsers', function(onlineUsers){
     }
 
     onlineUsers.forEach(function(user){
-        if(user.id != myUser.id) {
-            var activeClass = (user.id == myFriend.id) ? 'active' : '';
+        if(user.id !== myUser.id) {
+            var activeClass = (user.id === myFriend.id) ? 'active' : '';
             usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="selectUerChatBox(this, \'' + user.id + '\', \'' + user.name + '\')"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
         }
     });

@@ -1,4 +1,4 @@
-// import {submitFunction, notifyTyping } from "../../pages/chat";
+import {submitFunction, notifyTyping } from "../../pages/server";
 import "../style.css";
 
 function Chat() {
@@ -7,10 +7,10 @@ function Chat() {
             <ul id="messages"/>
             <span id="notifyTyping"/>
             {/*onSubmit={submitFunction}*/}
-            <form id="form" action="" >
+            <form id="form" action="" onSubmit={submitFunction}>
                 <input type="hidden" id="user" value=""/>
                 {/*onKeyUp={notifyTyping}*/}
-                <input id="m" autoComplete="off" placeholder="Type your message here.."/>
+                <input id="m" autoComplete="off" placeholder="Type your message here.." onKeyUp={notifyTyping}/>
                 <input type="submit" id="button" value="Send"/>
             </form>
         </>
