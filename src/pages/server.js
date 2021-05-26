@@ -12,7 +12,7 @@ var $ = require( "jquery" );
 
 // Document Ready function called automatically on page load
 $(document).ready(function(){
-    loginMe();
+    // loginMe();
 });
 
 // Function to ask user to supply his/her name before entering a chatbox
