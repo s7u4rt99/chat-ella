@@ -141,7 +141,7 @@ socket.on('newUser', function(newUser){
 
 // Listen to notifyTyping event to notify that the friend id typying a message
 socket.on('notifyTyping', function(sender, recipient){
-    if(myFriend.id == sender.id) {
+    if(myFriend.id === sender.id) {
         $('#notifyTyping').text(sender.name + ' is typing ...');
     }
     setTimeout(function(){ $('#notifyTyping').text(''); }, 5000);
@@ -151,7 +151,7 @@ socket.on('notifyTyping', function(sender, recipient){
 socket.on('onlineUsers', function(onlineUsers){
     var usersList = '';
 
-    if(onlineUsers.length == 2) {
+    if(onlineUsers.length === 2) {
         onlineUsers.forEach(function(user){
             if(myUser.id !== user.id){
                 myFriend.id = user.id;
