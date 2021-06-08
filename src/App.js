@@ -100,7 +100,7 @@ export default function App() {
             $('#onlineUsers').html(usersList);
         });
 
-        // Listen to chantMessage event to receive a message sent by my friend
+        // Listen to chatMessage event to receive a message sent by my friend
         socket.on('chatMessage', function(message){
             appendChatMessage(message);
         });
@@ -112,7 +112,7 @@ export default function App() {
             $('#messages').hide();
         });
 
-        return () => socket.disconnect();
+        // return () => socket.disconnect();
     }, []);
 
     const loginMe = (name) => {
@@ -120,6 +120,7 @@ export default function App() {
         // $('#user').val(person);
         // socket.emit('newUser', person);
         console.log('registered name')
+        $('#user').val(name);
         socket.emit('newUser', name)
     }
 
