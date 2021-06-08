@@ -4,12 +4,12 @@ import { FirebaseAuthConsumer } from "@react-firebase/auth";
 import "./style.css"
 function PageLogin() {
     const handleGoogleSignIn = (firebase) => {
-        var googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+        let googleAuthProvider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(googleAuthProvider).then(function(result) {
             // This gives you a Google Access Token.
-            var token = result.credential.accessToken;
-            // The signed-in user info.
-            var user = result.user;
+            //     var token = result.credential.accessToken;
+            //     // The signed-in user info.
+            //     var user = result.user;
         });
     };
 

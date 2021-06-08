@@ -1,9 +1,15 @@
-import {submitFunction, notifyTyping } from "../../pages/server";
+// import {submitFunction, notifyTyping } from "../../pages/server";
 import "../style.css";
+// import {notifyTyping, submitFunction} from "../../chat.js";
 
-function Chat() {
+function ChatContainer(props) {
+    const {submitFunction, notifyTyping} = props
+    // const subFunct = () => {
+    //     this.props.submitFunction()
+    // }
     return (
         <>
+            {/*<script src='../../chat.js'></script>*/}
             <ul id="messages"/>
             <span id="notifyTyping"/>
             {/*onSubmit={submitFunction}*/}
@@ -44,4 +50,4 @@ function Chat() {
 //     socket.emit('notifyTyping', myUser, myFriend);
 // }
 
-export default Chat;
+export default ChatContainer;
