@@ -175,7 +175,8 @@ function ChatPage() {
     //         $('#messages').html('');
     //     }
     // }
-// Function to clear chat notifocation count to 0
+
+// Function to clear chat notification count to 0
     function clearChatNotificationCount(userId) {
         chatNotificationCount[userId] = 0;
         $('#' + userId + ' label.chatNotificationCount').hide();
