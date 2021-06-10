@@ -2,7 +2,7 @@ import OnlineUsers from "../components/OnlineUsers/OnlineUsers";
 import "../components/style.css"
 import { FirebaseAuthConsumer } from "@react-firebase/auth";
 import io from "socket.io-client";
-import {useEffect, useRef} from "react";
+import {useEffect} from "react";
 // import {appendChatMessage, loginMe, selectUserChatBox} from "../chat";
 // import openSocket from "socket.io-client";
 // import React, { useEffect, useRef } from "react"
@@ -38,7 +38,7 @@ function ChatPage() {
         // Listen to newUser even to set client with the current user information
         socket.on('newUser', function(newUser){
             myUser = newUser;
-            $('#myName').html(myUser.name);
+            // $('#myName').html(myUser.name);
         });
 
         // Listen to notifyTyping event to notify that the friend id typying a message
@@ -46,7 +46,7 @@ function ChatPage() {
             if(myFriend.id === sender.id) {
                 $('#notifyTyping').text(sender.name + ' is typing ...');
             }
-            setTimeout(function(){ $('#notifyTyping').text(''); }, 5000);
+            setTimeout(function(){ $('#notifyTyping').text(''); }, 1000);
         });
 
         // Listen to onlineUsers event to update the list of online users
@@ -118,8 +118,7 @@ function ChatPage() {
         socket.emit('newUser', name)
     }
 
-    const appendChatMessage = (message, e) => {
-        e.preventDefault();
+    const appendChatMessage = (message) => {
         if(message.receiver === myUser.id && message.sender === myFriend.id) {
             playNewMessageAudio();
             var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
@@ -134,6 +133,8 @@ function ChatPage() {
         } else {
             allChatMessages[message.sender] = new Array(message);
         }
+
+        return false;
     }
     // Function to play a audio when new message arrives on selected chatbox
     function playNewMessageAudio() {
@@ -188,8 +189,8 @@ function ChatPage() {
         });
     }
 
-    const submitFunction = () => {
-        // event.preventDefault();
+    const submitFunction = (e) => {
+        e.preventDefault()
         var message = {};
         const text = $('#m').val();
 
@@ -226,7 +227,7 @@ function ChatPage() {
             <div className="chatContainer">
                 <ul id="messages"/>
                 <span id="notifyTyping"/>
-                <form id="form" action="" onSubmit={ () => submitFunction()}>
+                <form id="form" action="" onSubmit={(e) => submitFunction(e)}>
                     <input type="hidden" id="user" value=""/>
                     <input id="m" autoComplete="off" placeholder="Type your message here.." onKeyUp={() => notifyTyping()}/>
                     <input type="submit" id="button" value="Send"/>

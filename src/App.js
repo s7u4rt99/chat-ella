@@ -5,8 +5,9 @@ import {
 } from "@react-firebase/auth";
 import PageLogin from "./pages/LoginPage";
 import PageChat from "./pages/ChatPage";
-import {useEffect, useRef, useState} from "react";
-import io from "socket.io-client";
+// import {useEffect, useRef, useState} from "react";
+// import io from "socket.io-client";
+
 // import {useEffect, useState} from "react";
 // import {io} from "socket.io-client";
 // import {Route} from 'react-router';
@@ -17,7 +18,7 @@ import io from "socket.io-client";
 
 // import "./pages/style.css";
 
-const SOCKET_SERVER_URL = "http://localhost:4000";
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 
 export default function App() {
