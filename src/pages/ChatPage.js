@@ -120,11 +120,11 @@ function ChatPage() {
 
     const appendChatMessage = (message) => {
         if(message.receiver === myUser.id && message.sender === myFriend.id) {
-            playNewMessageAudio();
+            // playNewMessageAudio();
             var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
             $('#messages').append('<li class="' + cssClass + '">' + message.text + '</li>');
         } else {
-            playNewMessageNotificationAudio();
+            // playNewMessageNotificationAudio();
             updateChatNotificationCount(message.sender);
         }
 
@@ -136,15 +136,15 @@ function ChatPage() {
 
         return false;
     }
-    // Function to play a audio when new message arrives on selected chatbox
-    function playNewMessageAudio() {
-        (new Audio('https://notificationsounds.com/soundfiles/8b16ebc056e613024c057be590b542eb/file-sounds-1113-unconvinced.mp3')).play();
-    }
-
-// Function to play a audio when new message arrives on selected chatbox
-    function playNewMessageNotificationAudio() {
-        (new Audio('https://notificationsounds.com/soundfiles/dd458505749b2941217ddd59394240e8/file-sounds-1111-to-the-point.mp3')).play();
-    }
+//     // Function to play a audio when new message arrives on selected chatbox
+//     function playNewMessageAudio() {
+//         (new Audio('https://notificationsounds.com/soundfiles/8b16ebc056e613024c057be590b542eb/file-sounds-1113-unconvinced.mp3')).play();
+//     }
+//
+// // Function to play a audio when new message arrives on selected chatbox
+//     function playNewMessageNotificationAudio() {
+//         (new Audio('https://notificationsounds.com/soundfiles/dd458505749b2941217ddd59394240e8/file-sounds-1111-to-the-point.mp3')).play();
+//     }
 
 // Function to update chat notifocation count
     function updateChatNotificationCount(userId) {
@@ -153,28 +153,6 @@ function ChatPage() {
         $('#' + userId + ' label.chatNotificationCount').html(count);
         $('#' + userId + ' label.chatNotificationCount').show();
     }
-
-    // function selectUserChatBox(element, userId, userName) {
-    //     myFriend.id = userId;
-    //     myFriend.name = userName;
-    //
-    //     $('#form').show();
-    //     $('#messages').show();
-    //     $('#onlineUsers li').removeClass('active');
-    //     $(element).addClass('active');
-    //     $('#notifyTyping').text('');
-    //     $('#m').val('').focus();
-    //
-    //     // Reset chat message count to 0
-    //     clearChatNotificationCount(userId);
-    //
-    //     // load all chat message for selected user
-    //     if(allChatMessages[userId] != undefined) {
-    //         loadChatBox(allChatMessages[userId]);
-    //     } else {
-    //         $('#messages').html('');
-    //     }
-    // }
 
 // Function to clear chat notification count to 0
     function clearChatNotificationCount(userId) {
