@@ -13,10 +13,10 @@ export default function App() {
     return (
 
             <div className="App">
-                <AppShell />
-                <div style={{ width: "100%", margin: "0 auto" }}>
                 <FirebaseAuthConsumer>
                     <IfFirebaseAuthed>
+                        <AppShell />
+                        {/*<div style={{ width: "100%", margin: "0 auto" }} />*/}
                         {/*<PageChat loginMe={loginMe} submitFunction={submitFunction} notifyTyping={notifyTyping}/>*/}
                         <PageChat />
                     </IfFirebaseAuthed>
@@ -25,7 +25,6 @@ export default function App() {
                     </IfFirebaseUnAuthed>
                 </FirebaseAuthConsumer>
             </div>
-        </div>
     );
 }
 
