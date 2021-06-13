@@ -20,7 +20,7 @@ function AppShell() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="relative">
             <Toolbar>
                 <Typography variant="h6" style={{ flexGrow: 1, textAlign: "left" }}>
                     Chatella

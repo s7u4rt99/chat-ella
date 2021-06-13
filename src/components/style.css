@@ -8,12 +8,12 @@ body { font-size: 16px; font-family: "Lucida Grande",Verdana,Arial,"Bitstream Ve
 .onlineUsersContainer ul li.active { background: rgba(211, 176, 243, 0.92); }
 .onlineUsersContainer ul li:hover { background: rgb(214, 187, 239) }
 .onlineUsersContainer li a { color: #6C0DC3; text-decoration:none; }
-.chatContainer { width: 80%; float: left; min-height: 869px; border-left: 3px solid #B57DE8; }
+.chatContainer { width: 80%; float: left; margin-top: 10%; border-left: 3px solid #B57DE8; }
 form { background: #2E8E12; padding: 3px; position: fixed; bottom: 0; width: 80%; }
 form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
 form #button { color:#FFF; background: #34BB0C; border: none; padding: 10px;  width: 9%; }
-#messages { list-style-type: none; margin: 0; padding: 0; position: absolute; bottom: 70px; float: left; width: 79%; }
-#messages li { padding: 5px 10px; }
+#messages { list-style-type: none; margin-top: 10%; padding: 0; position: absolute; bottom: 70px; float: left; width: 79%; }
+#messages li { padding: 5px 10px; margin-top: 10%;}
 #notifyTyping { font-size: 12px; position: fixed; bottom: 42px; width: 100%; padding: 5px; }
 .chatNotificationCount { color: #FFF; display: none; float: right; border-radius: 12px; border: 1px solid #2E8E12; background: #34BB0C; padding: 2px 6px; }
 #messages li.chatMessageRight { border-radius: 25px; padding: 11px 18px; background: #34BB0C; color: #ffffff; position: relative; display: inline-block; max-width: 500px; float: right; clear: both; margin: 12px 0px; }
