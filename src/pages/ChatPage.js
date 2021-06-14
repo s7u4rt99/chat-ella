@@ -39,7 +39,7 @@ function ChatPage() {
         // Listen to newUser even to set client with the current user information
         socket.on('newUser', function (newUser) {
             myUser = newUser;
-            // $('#myName').html(myUser.name);
+            $('#myName').html(myUser.name);
         });
 
         // Listen to notifyTyping event to notify that the friend id typying a message
@@ -56,28 +56,6 @@ function ChatPage() {
         socket.on('onlineUsers', function (onlineUsers) {
             var usersList = '';
 
-            function selectUserChatBox(element, userId, userName) {
-                myFriend.id = userId;
-                myFriend.name = userName;
-
-                $('#form').show();
-                $('#messages').show();
-                $('#onlineUsers li').removeClass('active');
-                $(element).addClass('active');
-                $('#notifyTyping').text('');
-                $('#m').val('').focus();
-
-                // Reset chat message count to 0
-                clearChatNotificationCount(userId);
-
-                // load all chat message for selected user
-                if (allChatMessages[userId] !== undefined) {
-                    loadChatBox(allChatMessages[userId]);
-                } else {
-                    $('#messages').html('');
-                }
-            }
-
             if (onlineUsers.length === 2) {
                 onlineUsers.forEach(function (user) {
                     if (myUser.id !== user.id) {
@@ -92,7 +70,8 @@ function ChatPage() {
             onlineUsers.forEach(function (user) {
                 if (user.id !== myUser.id) {
                     var activeClass = (user.id === myFriend.id) ? 'active' : '';
-                    usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick= {selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\')"}><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
+                    // usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick= {selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\')"}><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
+                    usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick={selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\')}><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                 }
             });
             $('#onlineUsers').html(usersList);
@@ -112,6 +91,28 @@ function ChatPage() {
 
         return () => socket.disconnect();
     }, []);
+
+    function selectUserChatBox(element, userId, userName) {
+        myFriend.id = userId;
+        myFriend.name = userName;
+
+        $('#form').show();
+        $('#messages').show();
+        $('#onlineUsers li').removeClass('active');
+        $(element).addClass('active');
+        $('#notifyTyping').text('');
+        $('#m').val('').focus();
+
+        // Reset chat message count to 0
+        clearChatNotificationCount(userId);
+
+        // load all chat message for selected user
+        if (allChatMessages[userId] !== undefined) {
+            loadChatBox(allChatMessages[userId]);
+        } else {
+            $('#messages').html('');
+        }
+    }
 
     const loginMe = (name) => {
         // var person = prompt("Please enter a username:", "");//user;
@@ -200,7 +201,7 @@ function ChatPage() {
     }
     return (
         <>
-            <AppShell/>
+            <AppShell userId={myUser.id}/>
             <div className="onlineUsersContainer">
                 <FirebaseAuthConsumer>
                     {({user}) => <OnlineUsers user={user.displayName} onload={loginMe(user.displayName)}/>}

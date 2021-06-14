@@ -1,11 +1,15 @@
 import {useState} from "react";
 import {AppBar, Avatar, Menu, MenuItem, Toolbar, Typography} from "@material-ui/core";
 import {IfFirebaseAuthed} from "@react-firebase/auth";
+import io from "socket.io-client";
 
 
-function AppShell() {
+
+
+function AppShell(props) {
     const [anchorEl, setAnchorEl] = useState(null);
-
+    const myUserId = props.userId;
+    const socket = io("http://localhost:4000");
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -14,9 +18,10 @@ function AppShell() {
         setAnchorEl(null);
     };
 
-    const handleLogout = (firebase) => {
+    const handleLogout = (firebase, socket) => {
         handleClose();
         firebase.auth().signOut();
+        socket.emit('userIsDisconnected', myUserId );
     };
 
     return (
@@ -42,7 +47,7 @@ function AppShell() {
                                 open={Boolean(anchorEl)}
                                 onClose={handleClose}
                             >
-                                <MenuItem onClick={() => handleLogout(firebase)}>
+                                <MenuItem onClick={() => handleLogout(firebase, socket)}>
                                     Logout
                                 </MenuItem>
                             </Menu>
