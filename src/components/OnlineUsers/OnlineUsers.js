@@ -1,11 +1,11 @@
 import "../style.css";
 
 function OnlineUsers(props) {
-    const { user } = props;
+    const { username } = props;
     return (
         <>
             <div className="userInfo">Welcome {" "}
-                <label id="myName">{user}</label> !!
+                <label id="myName">{username}</label> !!
             </div>
             <div>
                 <ul id="onlineUsers"/>
