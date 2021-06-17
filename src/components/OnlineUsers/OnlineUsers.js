@@ -1,7 +1,7 @@
 import "../style.css";
 
 function OnlineUsers(props) {
-    const { username } = props;
+    const { username, selectUserChatBox } = props;
     return (
         <>
             <div className="userInfo">Welcome {" "}

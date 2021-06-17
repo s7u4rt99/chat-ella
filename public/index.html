@@ -21,6 +21,36 @@
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        // var myFriend = {};
+        // var allChatMessages = [];
+        // var chatNotificationCount = [];
+        // var myUser = [];
+        // var $ = require("jquery");
+
+        function selectUserChatBox(element, userId, userName, myFriend, allChatMessages, clearChatNotificationCount, loadChatBox) {
+            myFriend.id = userId;
+            myFriend.name = userName;
+
+            $('#form').show();
+            $('#messages').show();
+            $('#onlineUsers li').removeClass('active');
+            $(element).addClass('active');
+            $('#notifyTyping').text('');
+            $('#m').val('').focus();
+
+            // Reset chat message count to 0
+            clearChatNotificationCount(userId);
+
+            // load all chat message for selected user
+            if (allChatMessages[userId] !== undefined) {
+                loadChatBox(allChatMessages[userId]);
+            } else {
+                $('#messages').html('');
+            }
+        }
+    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

@@ -7,12 +7,10 @@
 import '@firebase/auth'
 import PageLogin from "./pages/LoginPage";
 import PageChat from "./pages/ChatPage";
-import {useEffect, useState} from "react";
-import fire from "./config/firebase";
-import {FirebaseAuthConsumer, IfFirebaseAuthed, IfFirebaseAuthedAnd, IfFirebaseUnAuthed} from "@react-firebase/auth";
+import {useState} from "react";
+import {FirebaseAuthConsumer, IfFirebaseAuthedAnd, IfFirebaseUnAuthed} from "@react-firebase/auth";
 // import "./App.css"
 //import AppShell from "./components/Header/AppShell"
-
 
 
 export default function App() {
@@ -37,7 +35,7 @@ export default function App() {
     const handleLogin = (firebase) => {
         clearErrors()
         firebase.auth().signInWithEmailAndPassword(email, password).catch(err => {
-            switch(err.code) {
+            switch (err.code) {
                 case "auth/invalid-email":
                 case "auth/user-disabled":
                 case "auth/user-not-found":
@@ -52,10 +50,10 @@ export default function App() {
 
     const handleSignup = (firebase) => {
         clearErrors()
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(function (result) {
             return result.user.updateProfile({displayName: username})
-        } ).catch(err => {
-            switch(err.code) {
+        }).catch(err => {
+            switch (err.code) {
                 case "auth/email-already-in-use":
                 case "auth/invalid-email":
                     setEmailError(err.message);
@@ -87,25 +85,25 @@ export default function App() {
             <FirebaseAuthConsumer>
                 <IfFirebaseUnAuthed>
                     <PageLogin
-                    email={email}
-                    setEmail={setEmail}
-                    password={password}
-                    setPassword={setPassword}
-                    handleLogin={handleLogin}
-                    handleSignup={handleSignup}
-                    hasAccount={hasAccount}
-                    setHasAccount={setHasAccount}
-                    emailError={emailError}
-                    passwordError={passwordError}
-                    username={username}
-                    setUsername={setUsername}
+                        email={email}
+                        setEmail={setEmail}
+                        password={password}
+                        setPassword={setPassword}
+                        handleLogin={handleLogin}
+                        handleSignup={handleSignup}
+                        hasAccount={hasAccount}
+                        setHasAccount={setHasAccount}
+                        emailError={emailError}
+                        passwordError={passwordError}
+                        username={username}
+                        setUsername={setUsername}
                     />
                 </IfFirebaseUnAuthed>
                 <IfFirebaseAuthedAnd filter={({user}) => {
                     return user.displayName !== null
                 }}>
                     {/*<PageChat user={user}/>*/}
-                    <PageChat />
+                    <PageChat/>
                 </IfFirebaseAuthedAnd>
             </FirebaseAuthConsumer>
         </div>

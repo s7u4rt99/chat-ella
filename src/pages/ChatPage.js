@@ -79,10 +79,12 @@ function ChatPage(props) {
                     console.log('myUser.id = ' + myUser.id);
                     console.log('friend name = ' + user.name)
                     var activeClass = (user.id === myFriend.id) ? 'active' : '';
+                    // usersList += '<li id="' + user.id + '" class="' + activeClass + '"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                     // usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="helloWorld()"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
-                    usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\')"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
+                    usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\',\'' + myFriend + '\',\'' + allChatMessages + '\', \'' + 'clearChatNotificationCount' + '\',\'' + 'loadChatBox' + '\')"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                     // usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick= {selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\')"}><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                     // usersList += '<li id="\'{user.id}\'" class=" \'{activeClass}\' " onClick={selectUserChatBox(this,\'' + user.id + '\', \'' + user.name + '\')}><a href="javascript:void(0)">{user.name}</a><label class="chatNotificationCount"></label></li>';
+                    // document.getElementById(user.id).addEventListener("click", () => selectUserChatBox(this, user.id, user.name), false)
                 }
             });
             $('#onlineUsers').html(usersList);
@@ -102,10 +104,6 @@ function ChatPage(props) {
 
         return () => socket.disconnect();
     }, []);
-
-    function helloWorld(){
-        console.log('hello world');
-    }
 
     function selectUserChatBox(element, userId, userName) {
         myFriend.id = userId;
@@ -221,7 +219,7 @@ function ChatPage(props) {
             <AppShell />
             <div className="onlineUsersContainer">
                 <FirebaseAuthConsumer>
-                    {({user}) => <OnlineUsers username={user.displayName} onload={loginMe(user.displayName)}/>}
+                    {({user}) => <OnlineUsers username={user.displayName} onload={loginMe(user.displayName)} selectUserChatBox={selectUserChatBox}/>}
                     {/*{({ user }) => <OnlineUsers user={user.displayName} onload={loginMe(user.displayName)}/>}*/}
                 </FirebaseAuthConsumer>
             </div>
