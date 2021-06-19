@@ -80,17 +80,21 @@ function ChatPage(props) {
                     console.log('myUser.id = ' + myUser.id);
                     console.log('friend name = ' + user.name)
                     var activeClass = (user.id === myFriend.id) ? 'active' : '';
+                    var userid = user.id
                     // usersList += '<li id="' + user.id + '" class="' + activeClass + '"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                     // usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="helloWorld()"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                     //usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\',\'' + myFriend + '\',\'' + allChatMessages + '\', \'' + 'clearChatNotificationCount' + '\',\'' + 'loadChatBox' + '\')"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                     usersList += '<li id="' + user.id + '" class="' + activeClass + '" ><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                     // usersList += '<li id="\'{user.id}\'" class=" \'{activeClass}\' " ><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
-                     document.getElementById("onlineUsers").addEventListener("click", () => selectUserChatBox(this, user.id, user.name), false)
+                    $(document).ready(function() {document.getElementById(userid).addEventListener("click", () => selectUserChatBox(this, user.id, user.name), false)})
+                    //usersList.addEventListener("click", () => selectUserChatBox(this, user.id, user.name), false);
+                    //document.getElementById("onlineUsers").removeEventListener("click", () => selectUserChatBox(this, user.id, user.name), false)
                     //usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\')"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
 
                 }
             });
             $('#onlineUsers').html(usersList);
+
         });
 
         // Listen to chantMessage event to receive a message sent by my friend
