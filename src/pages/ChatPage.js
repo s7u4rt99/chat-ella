@@ -2,9 +2,10 @@ import OnlineUsers from "../components/OnlineUsers/OnlineUsers";
 import "../components/style.css"
 // import {FirebaseAuthConsumer} from "@react-firebase/auth";
 import io from "socket.io-client";
-import {useEffect} from "react";
+import {useEffect, dangerouuslySetInnerHTML} from "react";
 import AppShell from "../components/Header/AppShell";
 import {FirebaseAuthConsumer} from "@react-firebase/auth";
+import ScriptTag from 'react-script-tag'
 // import {appendChatMessage, loginMe, selectUserChatBox} from "../chat";
 // import openSocket from "socket.io-client";
 // import React, { useEffect, useRef } from "react"
@@ -81,10 +82,12 @@ function ChatPage(props) {
                     var activeClass = (user.id === myFriend.id) ? 'active' : '';
                     // usersList += '<li id="' + user.id + '" class="' + activeClass + '"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                     // usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="helloWorld()"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
-                    usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\',\'' + myFriend + '\',\'' + allChatMessages + '\', \'' + 'clearChatNotificationCount' + '\',\'' + 'loadChatBox' + '\')"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
-                    // usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick= {selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\')"}><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
-                    // usersList += '<li id="\'{user.id}\'" class=" \'{activeClass}\' " onClick={selectUserChatBox(this,\'' + user.id + '\', \'' + user.name + '\')}><a href="javascript:void(0)">{user.name}</a><label class="chatNotificationCount"></label></li>';
-                    // document.getElementById(user.id).addEventListener("click", () => selectUserChatBox(this, user.id, user.name), false)
+                    //usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\',\'' + myFriend + '\',\'' + allChatMessages + '\', \'' + 'clearChatNotificationCount' + '\',\'' + 'loadChatBox' + '\')"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
+                    usersList += '<li id="' + user.id + '" class="' + activeClass + '" ><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
+                    // usersList += '<li id="\'{user.id}\'" class=" \'{activeClass}\' " ><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
+                     document.getElementById("onlineUsers").addEventListener("click", () => selectUserChatBox(this, user.id, user.name), false)
+                    //usersList += '<li id="' + user.id + '" class="' + activeClass + '" onclick="selectUserChatBox(this, \'' + user.id + '\', \'' + user.name + '\')"><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
+
                 }
             });
             $('#onlineUsers').html(usersList);
@@ -214,13 +217,26 @@ function ChatPage(props) {
         socket.emit('notifyTyping', myUser, myFriend);
     }
 
+
+
     return (
         <>
-            <AppShell />
+
+            <AppShell/>
             <div className="onlineUsersContainer">
                 <FirebaseAuthConsumer>
                     {({user}) => <OnlineUsers username={user.displayName} onload={loginMe(user.displayName)} selectUserChatBox={selectUserChatBox}/>}
                     {/*{({ user }) => <OnlineUsers user={user.displayName} onload={loginMe(user.displayName)}/>}*/}
+                    {/*{({user}) =>*/}
+                    {/*    <>*/}
+                    {/*        <div className="userInfo" onload={loginMe(user.displayName)}>Welcome {" "}*/}
+                    {/*            <label id="myName">{user.displayName}</label> !!*/}
+                    {/*        </div>*/}
+                    {/*        <div>*/}
+                    {/*            <ul id="onlineUsers"/>*/}
+                    {/*        </div>*/}
+                    {/*    </>*/}
+                    {/*}*/}
                 </FirebaseAuthConsumer>
             </div>
             <div className="chatContainer">
@@ -258,11 +274,6 @@ function ChatPage(props) {
 }
 
 export default ChatPage;
-
-
-
-
-
 
 
 // import OnlineUsers from "../components/OnlineUsers/OnlineUsers";
