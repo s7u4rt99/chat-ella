@@ -195,7 +195,8 @@ function ChatPage(props) {
             }
             socket.emit('chatMessage', message);
         }
-
+        let messages = document.getElementById('messages')
+        messages && messages.scrollTo(0, messages.scrollHeight)
         $('#m').val('').focus();
         return false;
     }
