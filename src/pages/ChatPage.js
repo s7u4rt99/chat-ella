@@ -400,7 +400,7 @@ function ChatPage(props) {
                 reader.readAsDataURL(blob);
                 reader.onloadend = function() {
                     imageSrc = reader.result;
-                    $('#messages').append('<li class="' + cssClass + '"><img style={{width:150, height:"auto"}} src={' + imageSrc + '} /></li>');
+                    $('#messages').append('<li class="' + cssClass + '"><img style={{width:150, height:"auto"}} src="' + imageSrc + '" /></li>');
                 }
                 // let imageSrc = reader.result;
             } else {
@@ -452,7 +452,7 @@ function ChatPage(props) {
                 reader.readAsDataURL(blob);
                 reader.onloadend = function() {
                     imageSrc = reader.result;
-                    $('#messages').append('<li class="' + cssClass + '"><img style={{width:150, height:"auto"}} src={' + imageSrc + '} /></li>');
+                    $('#messages').append('<li class="' + cssClass + '"><img style={{width:150, height:"auto"}} src="' + imageSrc + '" /></li>');
                 }
             } else {
                 $('#messages').append('<li class="' + cssClass + '">' + message.text + '</li>');
@@ -481,7 +481,8 @@ function ChatPage(props) {
             reader.readAsDataURL(blob);
             reader.onloadend = function() {
                 imageSrc = reader.result;
-                $('#messages').append('<li class="chatMessageRight"><img style={{width:150, height:"auto"}} src={' + imageSrc + '} /></li>');
+                console.log("imageSrc=", imageSrc);
+                $('#messages').append('<li class="chatMessageRight"><img style={{width:150, height:"auto"}} src="' + imageSrc + '" /></li>');
             }
             // let imageSrc = reader.result;
             // alt={' + message.fileName + '}
