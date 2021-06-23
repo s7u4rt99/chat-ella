@@ -205,8 +205,6 @@ function ChatPage(props) {
         socket.emit('notifyTyping', myUser, myFriend);
     }
 
-
-
     return (
         <>
 

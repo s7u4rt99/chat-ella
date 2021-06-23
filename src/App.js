@@ -8,7 +8,8 @@ import '@firebase/auth'
 import PageLogin from "./pages/LoginPage";
 import PageChat from "./pages/ChatPage";
 import {useState} from "react";
-import {FirebaseAuthConsumer, IfFirebaseAuthedAnd, IfFirebaseUnAuthed} from "@react-firebase/auth";
+import {FirebaseAuthConsumer, IfFirebaseAuthed, IfFirebaseAuthedAnd, IfFirebaseUnAuthed} from "@react-firebase/auth";
+import OnlineUsers from "./components/OnlineUsers/OnlineUsers";
 // import "./App.css"
 //import AppShell from "./components/Header/AppShell"
 
@@ -51,7 +52,8 @@ export default function App() {
     const handleSignup = (firebase) => {
         clearErrors()
         firebase.auth().createUserWithEmailAndPassword(email, password).then(function (result) {
-            return result.user.updateProfile({displayName: username})
+            result.user.updateProfile({displayName: username})
+            window.location.reload()
         }).catch(err => {
             switch (err.code) {
                 case "auth/email-already-in-use":
@@ -63,6 +65,7 @@ export default function App() {
                     break;
             }
         })
+
     }
     //
     // const authListener = () => {
@@ -99,12 +102,18 @@ export default function App() {
                         setUsername={setUsername}
                     />
                 </IfFirebaseUnAuthed>
-                <IfFirebaseAuthedAnd filter={({user}) => {
-                    return user.displayName !== null
-                }}>
+                <IfFirebaseAuthed>
+                {/*<IfFirebaseAuthedAnd filter={({user}) => {*/}
+                {/*    return user.displayName !== null*/}
+                {/*}}>*/}
                     {/*<PageChat user={user}/>*/}
+                    {/*<FirebaseAuthConsumer>*/}
                     <PageChat/>
-                </IfFirebaseAuthedAnd>
+                    {/*    <PageChat onLoad={()=>window.location.reload()}/>*/}
+                        {/*{({user, isSignedIn}) => user.displayName != null ? (<PageChat/>) : (<div></div>)}*/}
+                    {/*</FirebaseAuthConsumer>*/}
+                {/*</IfFirebaseAuthedAnd>*/}
+                </IfFirebaseAuthed>
             </FirebaseAuthConsumer>
         </div>
     );
