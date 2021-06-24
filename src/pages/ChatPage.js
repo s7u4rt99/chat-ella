@@ -207,29 +207,24 @@ function ChatPage(props) {
     // }
 
     const appendChatMessage = (message) => {
-        if (message.type == "file") {
-            const blob = new Blob([message.body], {type: message.type});
-            if (message.receiver === myUser.id && message.sender === myFriend.id) {
-                // playNewMessageAudio();
-                var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
-                const reader = new FileReader();
-                let imageSrc = null
-                reader.readAsDataURL(blob);
-                reader.onloadend = function () {
-                    imageSrc = reader.result;
-                    $('#messages').append('<li class="' + cssClass + '"><img style={{width:150, height:"auto"}} src="' + imageSrc + '" /></li>');
-                }
+        if (message.receiver === myUser.id && message.sender === myFriend.id) {
+            // playNewMessageAudio();
+            var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
+            if (message.type === "file") {
+                appendPhoto(message, cssClass)
+                // const blob = new Blob([message.body], { type: message.type });
+                // const reader = new FileReader();
+                // let imageSrc = null
+                // reader.readAsDataURL(blob);
+                // reader.onloadend = function() {
+                //     imageSrc = reader.result;
+                //     $('#messages').append('<li class="' + cssClass + '"><img style={{width:150, height:"auto"}} src="' + imageSrc + '" /></li>');
+                // }
                 // let imageSrc = reader.result;
             } else {
                 // playNewMessageNotificationAudio();
 
                 // var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
-                updateChatNotificationCount(message.sender);
-            }
-        } else {
-            if (message.receiverGoogleId === myUser.googleId && message.senderGoogleId === myFriend.googleId) {
-                // playNewMessageAudio();
-                var cssClass = (message.senderGoogleId === myUser.googleId) ? 'chatMessageRight' : 'chatMessageLeft';
                 $('#messages').append('<li class="' + cssClass + '">' + message.text + '</li>');
             } else {
                 // playNewMessageNotificationAudio();
@@ -245,11 +240,11 @@ function ChatPage(props) {
     }
 
     const appendPhoto = (message, cssClass) => {
-        const blob = new Blob([message.body], {type: message.type});
+        const blob = new Blob([message.body], { type: message.type });
         const reader = new FileReader();
         let imageSrc = null
         reader.readAsDataURL(blob);
-        reader.onloadend = function () {
+        reader.onloadend = function() {
             imageSrc = reader.result;
             $('#messages').append('<li class="' + cssClass + '"><img style="max-width:100%;height:"auto"" src="' + imageSrc + '" /></li>');
             let messages = document.getElementById('messages')
@@ -284,11 +279,11 @@ function ChatPage(props) {
             } else {
                 var cssClass = (messages[i].sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
                 console.log("sender= ", messages[i].sender, " ", cssClass)
-                const blob = new Blob([messages[i].body], {type: messages[i].type});
+                const blob = new Blob([messages[i].body], { type: messages[i].type });
                 const reader = new FileReader();
                 reader.readAsDataURL(blob);
                 let imageSrc = reader.result;
-                reader.onloadend = function () {
+                reader.onloadend = function() {
                     imageSrc = reader.result
                     $("#" + i).html('<img style="max-width:100%;height:"auto"" src="' + imageSrc + '" />')
                     let chat = document.getElementById('messages')
@@ -344,6 +339,25 @@ function ChatPage(props) {
                 console.log(message.text);
                 console.log('myfriendid arr size: ' + myFriend.id.length + 'myuserid arr size: ' + myUser.id.length);
                 $('#messages').append('<li class="chatMessageRight">' + message.text + '</li>');
+                // if (allChatMessages[myFriend.id] !== undefined) {
+                //     allChatMessages[myFriend.id].push(message);
+                // } else {
+                //     allChatMessages[myFriend.id] = new Array(message);
+                // }
+                // socket.emit('chatMessage', message);
+            }
+
+        }
+        if (allChatMessages[myFriend.id] !== undefined) {
+            allChatMessages[myFriend.id].push(message);
+        } else {
+            allChatMessages[myFriend.id] = new Array(message);
+        }
+        socket.emit('chatMessage', message);
+        let messages = document.getElementById('messages')
+        messages && messages.scrollTo(0, messages.scrollHeight)
+        $('#m').val('').focus();
+        return false;
                 // if (allChatMessages[myFriend.id] !== undefined) {
                 //     allChatMessages[myFriend.id].push(message);
                 // } else {
