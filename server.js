@@ -9,13 +9,15 @@ const port = 4000 //process.env.NODE_ENV === "production" ? 3000 : 3001;
 // const cors = require('cors');
 // app.use(cors())
 
-const io = socketio(server,{
+const io = socketio(server, {
     cors: {
         origin: "localhost:3000"
     },
 });
 
 var onlineUsers = [];
+var userGoogleIdList = [];
+var googleIdToSocketId = {};
 let i = 0;
 // Initialize appication with route / (that means root of the application)
 // app.get('/', function(req, res){
@@ -28,36 +30,83 @@ let i = 0;
 // app.use(express.static(path.resolve(__dirname, '../front_end/build')));
 
 // Register events on socket connection
-io.on('connection', function(socket){
+
+io.on('connection', function (socket) {
     console.log(i);
     i++;
     console.log('connected')
 
     // Listen to chantMessage event sent by client and emit a chatMessage to the client
-    socket.on('chatMessage', function(message){
-        io.to(message.receiver).emit('chatMessage', message);
+    socket.on('chatMessage', function (message) {
+        message.receiver.forEach(function (socketId) {
+            io.to(socketId).emit('chatMessage', message);
+        })
+        console.log('msg sender arr size: ' + message.sender.length);
+        console.log('msg receiver arr size: ' + message.receiver.length);
+        console.log('this socketid: ' + socket.id);
+        console.log('msg sender arr' + JSON.stringify(message.sender));
+        if (Array.isArray(message.sender)) {//send msg to other windows of same google account
+            message.sender.forEach(function (socketId) {
+                if (socketId !== socket.id) {//msg came from different socket but same google acc
+                    //redirect message sent from window1 to 2 both same google acc
+                    message.origin = socket.id;
+                    message.destination = socketId;
+                    io.to(socketId).emit('updateChat', message);
+                    console.log('update chat fired');
+                }
+            })
+        }
+        //io.to(message.receiver).emit('chatMessage', message);
     });
 
     // Listen to notifyTyping event sent by client and emit a notifyTyping to the client
-    socket.on('notifyTyping', function(sender, receiver){
+    socket.on('notifyTyping', function (sender, receiver) {
         io.to(receiver.id).emit('notifyTyping', sender, receiver);
     });
 
     // Listen to newUser event sent by client and emit a newUser to the client with new list of online user
-    socket.once('newUser', function(user){
+    socket.once('newUser', function (user) {
         console.log('newUser registered');
-        console.log(user);
-        var newUser = {id: socket.id, name: user};
+        console.log(user.name);
+        console.log(user.googleId);
+        var newUser = {id: [socket.id], name: user.name, googleId: user.googleId};
         console.log(newUser.id)
-        onlineUsers.push(newUser);
-        io.to(socket.id).emit('newUser', newUser);
+        if (onlineUsers.length === 0) {//for first user or new unique user
+            onlineUsers.push(newUser);
+            userGoogleIdList.push(newUser.googleId);
+            googleIdToSocketId[newUser.googleId] = [];
+            googleIdToSocketId[newUser.googleId].push(socket.id);
+        } else if (userGoogleIdList.includes(newUser.googleId)) {//multiple user with same google ID : repeat accs
+            googleIdToSocketId[newUser.googleId].push(socket.id);
+
+            for (let i = 0; i < onlineUsers.length; i++) {
+                if (onlineUsers[i].googleId === newUser.googleId) {//find the old user with same google acc
+                    onlineUsers[i].id.push(socket.id);
+                    newUser.id = onlineUsers[i].id;
+                    console.log('onlineUsers repeat acc: ' + onlineUsers[i].id.length);
+                }
+            }
+        } else { //new unique user
+            onlineUsers.push(newUser);
+            userGoogleIdList.push(newUser.googleId);
+            googleIdToSocketId[newUser.googleId] = [];
+            googleIdToSocketId[newUser.googleId].push(socket.id);
+        }
+        var counter = 0;
+        console.log(googleIdToSocketId[newUser.googleId].length);
+        googleIdToSocketId[newUser.googleId].forEach(function (socketId) {
+            console.log('server emit newuser: ' + counter);
+            counter++;
+            io.to(socketId).emit('newUser', newUser);
+        });
+        console.log('onlineusers length: ' + onlineUsers.length);
         io.emit('onlineUsers', onlineUsers);
     });
 
     // Listen to disconnect event sent by client and emit userIsDisconnected and onlineUsers (with new list of online users) to the client
-    socket.on('disconnect', function(){
-        onlineUsers.forEach(function(user, index){
-            if(user.id === socket.id) {
+    socket.on('disconnect', function () {
+        onlineUsers.forEach(function (user, index) {
+            if (user.id === socket.id) {
                 onlineUsers.splice(index, 1);
                 io.emit('userIsDisconnected', socket.id);
                 io.emit('onlineUsers', onlineUsers);
@@ -73,10 +122,6 @@ io.on('connection', function(socket){
 //     console.log('listening on *:3000');
 // });
 server.listen(port, () => console.log(`listening on ${port}`));
-
-
-
-
 
 
 // var app = require('express')();
