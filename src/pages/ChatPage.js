@@ -176,6 +176,9 @@ function ChatPage(props) {
         reader.onloadend = function() {
             imageSrc = reader.result;
             $('#messages').append('<li class="' + cssClass + '"><img style="width:150px, height:"auto"" src="' + imageSrc + '" /></li>');
+            let messages = document.getElementById('messages')
+            messages && messages.scrollTo(0, messages.scrollHeight)
+            $('#m').val('').focus();
         }
     }
 
@@ -212,11 +215,17 @@ function ChatPage(props) {
                 reader.onloadend = function() {
                     imageSrc = reader.result
                     $("#" + i).html('<img style={{width:150, height:"auto"}} src="' + imageSrc + '" />')
+                    let chat = document.getElementById('messages')
+                    chat && chat.scrollTo(0, chat.scrollHeight)
+                    $('#m').val('').focus();
                 }
                 const confirmedCSS = cssClass;
                 $('#messages').append('<li id="' + i + '" class="' + confirmedCSS + '"></li>');
             }
         }
+        let chat = document.getElementById('messages')
+        chat && chat.scrollTo(0, chat.scrollHeight)
+        $('#m').val('').focus();
     }
 
     const submitFunction = (e) => {
