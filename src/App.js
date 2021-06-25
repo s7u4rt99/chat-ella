@@ -101,18 +101,18 @@ export default function App() {
                         setUsername={setUsername}
                     />
                 </IfFirebaseUnAuthed>
-                <IfFirebaseAuthed>
-                {/*<IfFirebaseAuthedAnd filter={({user}) => {*/}
-                {/*    return user.displayName !== null*/}
-                {/*}}>*/}
+                {/*<IfFirebaseAuthed>*/}
+                <IfFirebaseAuthedAnd filter={({user}) => {
+                    return user.displayName !== null
+                }}>
                     {/*<PageChat user={user}/>*/}
                     {/*<FirebaseAuthConsumer>*/}
                     <PageChat/>
                     {/*    <PageChat onLoad={()=>window.location.reload()}/>*/}
                         {/*{({user, isSignedIn}) => user.displayName != null ? (<PageChat/>) : (<div></div>)}*/}
                     {/*</FirebaseAuthConsumer>*/}
-                {/*</IfFirebaseAuthedAnd>*/}
-                </IfFirebaseAuthed>
+                </IfFirebaseAuthedAnd>
+                {/*</IfFirebaseAuthed>*/}
             </FirebaseAuthConsumer>
         </div>
     );
