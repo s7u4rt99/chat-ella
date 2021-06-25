@@ -4,7 +4,7 @@ var http = require('http');
 var server = http.createServer(app);
 const socketio = require('socket.io');
 // var io = socketio(http);
-const port = 4000 //process.env.NODE_ENV === "production" ? 3000 : 3001;
+const port = process.env.PORT || 4000 //process.env.NODE_ENV === "production" ? 3000 : 3001;
 
 // const cors = require('cors');
 // app.use(cors())

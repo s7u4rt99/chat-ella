@@ -30,13 +30,18 @@ function ChatPage(props) {
     var counter = 0;
 
     // const socketRef = useRef()
-    const socket = io("http://localhost:4000", {
+    // const socket = io("http://localhost:4000", {
+    //     // withCredentials: true
+    //     // extraHeaders: {
+    //     //     "my-custom-header": "abcd"
+    //     // }
+    // });
+    const socket = io("https://chatella-server.herokuapp.com/", {
         // withCredentials: true
         // extraHeaders: {
         //     "my-custom-header": "abcd"
         // }
     });
-
     // var socket = io.connect(SOCKET_SERVER_URL);//;
     useEffect(() => {
 
@@ -104,7 +109,7 @@ function ChatPage(props) {
                     var userid = user.googleId
                     usersList += '<li id="' + user.googleId + '" class="' + activeClass + '" ><a href="javascript:void(0)">' + user.name + '</a><label class="chatNotificationCount"></label></li>';
                     $(document).ready(function () {
-                        document.getElementById(userid).addEventListener("click", () => selectUserChatBox(this, user.id, user.name, user.googleId), false)
+                        document.getElementById(userid).addEventListener("click", () => selectUserChatBox(document.getElementById(userid), user.id, user.name, user.googleId), false)
                     })
                 }
             });
@@ -194,7 +199,7 @@ function ChatPage(props) {
     }
 
     const updateChat = (message) => {
-        var origin = message.origin;
+        var origin = message.origin; // socket that sent the message
         var destination = message.destination;
         if (message.senderGoogleId === myUser.googleId && message.sender.includes(message.origin)) {
             // playNewMessageAudio();
@@ -204,6 +209,7 @@ function ChatPage(props) {
             // playNewMessageNotificationAudio();
             updateChatNotificationCount(message.senderGoogleId);
         }
+        // $('#messages').append('<li class="chatMessageRight">' + message.text + '</li>');
         if (allChatMessages[message.receiverGoogleId] !== undefined) {
             allChatMessages[message.receiverGoogleId].push(message);
         } else {
