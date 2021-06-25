@@ -15,7 +15,7 @@ form #button { color:#FFF; background: #34BB0C; border: none; padding: 10px; wid
 form #button:hover { color:#FFF; background: #34BB0C; border: none; padding: 10px;  width: 9%; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);}
 #messages {scroll-behaviour: smooth; overflow-y: auto; overflow-x: hidden; word-wrap: break-word; list-style-type: none; margin-top: 10%; padding: 0; position: absolute; bottom: 70px; float: left; width: 79.5%; height: 86%;}
 #messages li { word-wrap: break-word; padding: 5px 10px; margin-top: 10%;}
-#notifyTyping { font-size: 12px; position: fixed; bottom: 42px; width: 100%; padding: 5px; }
+#notifyTyping { font-size: 12px; position: fixed; bottom: 80px; width: 100%; padding: 5px; }
 .chatNotificationCount { color: #FFF; display: none; float: right; border-radius: 12px; border: 1px solid #2E8E12; background: #34BB0C; padding: 2px 6px; }
 #messages li.chatMessageRight { word-wrap: break-word; border-radius: 25px; padding: 11px 18px; background: #34BB0C; color: #ffffff; position: relative; display: inline-block; max-width: 500px; float: right; clear: both; margin: 12px 0px; }
 #messages li.chatMessageRight:before { word-wrap: break-word;border-bottom-color: #34BB0C; border-radius: 20px / 10px; left: auto; right: -7px; content: ''; position: absolute; }
