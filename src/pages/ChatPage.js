@@ -121,8 +121,8 @@ function ChatPage(props) {
         // Listen for updateChat event to update message sent in case of multiple window with same google account
         socket.on('updateChat', function (message) {
             console.log('chat updated');
-            $('#messages').append('<li class="chatMessageRight">' + message.text + '</li>');
-            //updateChat(message);
+            //$('#messages').append('<li class="chatMessageRight">' + message.text + '</li>');
+            updateChat(message);
             //appendChatMessage(message);
         })
 
@@ -193,23 +193,29 @@ function ChatPage(props) {
         //allChatMessages = history;
     }
 
-    // const updateChat = (message) => {
-    //     var origin = message.origin;
-    //     var destination = message.destination;
-    //     if (message.receiverGoogleId === myUser.googleId && message.senderGoogleId === myFriend.googleId) {
-    //         // playNewMessageAudio();
-    //         var cssClass = (message.senderGoogleId === myUser.googleId) ? 'chatMessageRight' : 'chatMessageLeft';
-    //         $('#messages').append('<li class="' + cssClass + '">' + message.text + '</li>');
-    //     } else {
-    //         // playNewMessageNotificationAudio();
-    //         updateChatNotificationCount(message.senderGoogleId);
-    //     }
-    // }
+    const updateChat = (message) => {
+        var origin = message.origin;
+        var destination = message.destination;
+        if (message.senderGoogleId === myUser.googleId && message.sender.includes(message.origin)) {
+            // playNewMessageAudio();
+            //var cssClass = (message.senderGoogleId === myUser.googleId) ? 'chatMessageRight' : 'chatMessageLeft';
+            $('#messages').append('<li class="chatMessageRight">' + message.text + '</li>');
+        } else {
+            // playNewMessageNotificationAudio();
+            updateChatNotificationCount(message.senderGoogleId);
+        }
+        if (allChatMessages[message.receiverGoogleId] !== undefined) {
+            allChatMessages[message.receiverGoogleId].push(message);
+        } else {
+            allChatMessages[message.receiverGoogleId] = new Array(message);
+        }
+        return false;
+    }
 
     const appendChatMessage = (message) => {
-        if (message.receiver === myUser.id && message.sender === myFriend.id) {
+        if (message.receiverGoogleId === myUser.googleId && message.senderGoogleId === myFriend.googleId) {
             // playNewMessageAudio();
-            var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
+            var cssClass = (message.senderGoogleId === myUser.googleId) ? 'chatMessageRight' : 'chatMessageLeft';
             if (message.type === "file") {
                 appendPhoto(message, cssClass)
                 // const blob = new Blob([message.body], { type: message.type });
@@ -226,10 +232,10 @@ function ChatPage(props) {
 
                 // var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
                 $('#messages').append('<li class="' + cssClass + '">' + message.text + '</li>');
-            } else {
-                // playNewMessageNotificationAudio();
-                updateChatNotificationCount(message.senderGoogleId);
             }
+        } else {
+            // playNewMessageNotificationAudio();
+            updateChatNotificationCount(message.senderGoogleId);
         }
         if (allChatMessages[message.senderGoogleId] !== undefined) {
             allChatMessages[message.senderGoogleId].push(message);
@@ -240,11 +246,11 @@ function ChatPage(props) {
     }
 
     const appendPhoto = (message, cssClass) => {
-        const blob = new Blob([message.body], { type: message.type });
+        const blob = new Blob([message.body], {type: message.type});
         const reader = new FileReader();
         let imageSrc = null
         reader.readAsDataURL(blob);
-        reader.onloadend = function() {
+        reader.onloadend = function () {
             imageSrc = reader.result;
             $('#messages').append('<li class="' + cssClass + '"><img style="max-width:100%;height:"auto"" src="' + imageSrc + '" /></li>');
             let messages = document.getElementById('messages')
@@ -257,14 +263,14 @@ function ChatPage(props) {
     function updateChatNotificationCount(userGoogleId) {
         var count = (chatNotificationCount[userGoogleId] === undefined) ? 1 : chatNotificationCount[userGoogleId] + 1;
         //chatNotificationCount[userId] = count;
-        //$('#' + userId + ' label.chatNotificationCount').html(count);
-        //$('#' + userId + ' label.chatNotificationCount').show();
+        $('#' + userGoogleId + ' label.chatNotificationCount').html(count);
+        $('#' + userGoogleId + ' label.chatNotificationCount').show();
     }
 
 // Function to clear chat notification count to 0
-    function clearChatNotificationCount(userId) {
-        chatNotificationCount[userId] = 0;
-        $('#' + userId + ' label.chatNotificationCount').hide();
+    function clearChatNotificationCount(userGoogleId) {
+        chatNotificationCount[userGoogleId] = 0;
+        $('#' + userGoogleId + ' label.chatNotificationCount').hide();
     }
 
     function loadChatBox(messages) {
@@ -274,16 +280,16 @@ function ChatPage(props) {
         for (let i = 0; i < len; i++) {
             console.log(messages[i])
             if (messages[i].type !== "file") {
-                var cssClass = (messages[i].sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
+                var cssClass = (JSON.stringify(messages[i].sender) === JSON.stringify(myUser.id)) ? 'chatMessageRight' : 'chatMessageLeft';
                 $('#messages').append('<li class="' + cssClass + '">' + messages[i].text + '</li>');
             } else {
-                var cssClass = (messages[i].sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
+                var cssClass = (JSON.stringify(messages[i].sender) === JSON.stringify(myUser.id)) ? 'chatMessageRight' : 'chatMessageLeft';
                 console.log("sender= ", messages[i].sender, " ", cssClass)
-                const blob = new Blob([messages[i].body], { type: messages[i].type });
+                const blob = new Blob([messages[i].body], {type: messages[i].type});
                 const reader = new FileReader();
                 reader.readAsDataURL(blob);
                 let imageSrc = reader.result;
-                reader.onloadend = function() {
+                reader.onloadend = function () {
                     imageSrc = reader.result
                     $("#" + i).html('<img style="max-width:100%;height:"auto"" src="' + imageSrc + '" />')
                     let chat = document.getElementById('messages')
@@ -348,24 +354,7 @@ function ChatPage(props) {
             }
 
         }
-        if (allChatMessages[myFriend.id] !== undefined) {
-            allChatMessages[myFriend.id].push(message);
-        } else {
-            allChatMessages[myFriend.id] = new Array(message);
-        }
-        socket.emit('chatMessage', message);
-        let messages = document.getElementById('messages')
-        messages && messages.scrollTo(0, messages.scrollHeight)
-        $('#m').val('').focus();
-        return false;
-                // if (allChatMessages[myFriend.id] !== undefined) {
-                //     allChatMessages[myFriend.id].push(message);
-                // } else {
-                //     allChatMessages[myFriend.id] = new Array(message);
-                // }
-                // socket.emit('chatMessage', message);
-            }
-        }
+
         if (allChatMessages[myFriend.googleId] !== undefined) {
             allChatMessages[myFriend.googleId].push(message);
         } else {
@@ -380,7 +369,7 @@ function ChatPage(props) {
 
     const notifyTyping = () => {
         socket.emit('notifyTyping', myUser, myFriend);
-}
+    }
 
     const selectFile = (e) => {
         e.preventDefault();
@@ -394,7 +383,8 @@ function ChatPage(props) {
             <AppShell/>
             <div className="onlineUsersContainer">
                 <FirebaseAuthConsumer>
-                    {({user}) => <OnlineUsers username={user.displayName} onload={loginMe(user.displayName, user.uid)} selectUserChatBox={selectUserChatBox}/>}
+                    {({user}) => <OnlineUsers username={user.displayName} onload={loginMe(user.displayName, user.uid)}
+                                              selectUserChatBox={selectUserChatBox}/>}
                 </FirebaseAuthConsumer>
             </div>
             <div className="chatContainer">
