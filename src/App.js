@@ -52,8 +52,7 @@ export default function App() {
     const handleSignup = (firebase) => {
         clearErrors()
         firebase.auth().createUserWithEmailAndPassword(email, password).then(function (result) {
-            result.user.updateProfile({displayName: username})
-            window.location.reload()
+            result.user.updateProfile({displayName: username}).then(r => window.location.reload())
         }).catch(err => {
             switch (err.code) {
                 case "auth/email-already-in-use":
@@ -117,7 +116,8 @@ export default function App() {
             </FirebaseAuthConsumer>
         </div>
     );
-    // return (
+    // return (FirebaseAuthed>*/}
+    //             </FirebaseA
     //         <div className="App">
     //             {!user ? (
     //                 <PageLogin

@@ -18,7 +18,7 @@ const io = socketio(server, {
 var onlineUsers = [];
 var userGoogleIdList = [];
 var googleIdToSocketId = {};
-let i = 0;
+// let i = 0;
 // Initialize appication with route / (that means root of the application)
 // app.get('/', function(req, res){
 //     var express=require('express');
@@ -32,9 +32,9 @@ let i = 0;
 // Register events on socket connection
 
 io.on('connection', function (socket) {
-    console.log(i);
-    i++;
-    console.log('connected')
+    // console.log(i);
+    // i++;
+    // console.log('connected')
 
     // Listen to chantMessage event sent by client and emit a chatMessage to the client
     socket.on('chatMessage', function (message) {
