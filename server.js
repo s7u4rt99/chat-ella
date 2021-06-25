@@ -92,11 +92,11 @@ io.on('connection', function (socket) {
             googleIdToSocketId[newUser.googleId] = [];
             googleIdToSocketId[newUser.googleId].push(socket.id);
         }
-        var counter = 0;
+
         console.log(googleIdToSocketId[newUser.googleId].length);
         googleIdToSocketId[newUser.googleId].forEach(function (socketId) {
-            console.log('server emit newuser: ' + counter);
-            counter++;
+            console.log('server emit newuser length: ' + newUser.id.length);
+
             io.to(socketId).emit('newUser', newUser);
         });
         console.log('onlineusers length: ' + onlineUsers.length);
@@ -106,9 +106,20 @@ io.on('connection', function (socket) {
     // Listen to disconnect event sent by client and emit userIsDisconnected and onlineUsers (with new list of online users) to the client
     socket.on('disconnect', function () {
         onlineUsers.forEach(function (user, index) {
-            if (user.id === socket.id) {
-                onlineUsers.splice(index, 1);
-                io.emit('userIsDisconnected', socket.id);
+            if (user.id.includes(socket.id)) {
+                if (user.id.length === 1){//only 1 socket for the acc delete the whole user profile
+                    onlineUsers.splice(index, 1);
+                    const ugilIndex = userGoogleIdList.indexOf(user.googleId);
+                    userGoogleIdList.splice(ugilIndex, 1);
+                    delete googleIdToSocketId[user.googleId];
+                    io.emit('userIsDisconnected', user.googleId);
+                } else {//multiple socketid send updated user info and onlineuser list
+                    const index = user.id.indexOf(socket.id);
+                    user.id.splice(index, 1);
+                    user.id.forEach(function (socketId) {
+                        io.to(socketId).emit('newUser', user);
+                    });
+                }
                 io.emit('onlineUsers', onlineUsers);
             }
         });

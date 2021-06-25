@@ -127,8 +127,8 @@ function ChatPage(props) {
         })
 
         // Listen to userIsDisconnected event to remove its chat history from chatbox
-        socket.on('userIsDisconnected', function (userId) {
-            //delete allChatMessages[userId];
+        socket.on('userIsDisconnected', function (googleId) {
+            delete allChatMessages[googleId];
             window.localStorage.setItem("history", JSON.stringify(allChatMessages));
             console.log('data saved DC');
             $('#form').hide();
