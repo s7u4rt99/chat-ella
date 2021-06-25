@@ -61,7 +61,9 @@ io.on('connection', function (socket) {
 
     // Listen to notifyTyping event sent by client and emit a notifyTyping to the client
     socket.on('notifyTyping', function (sender, receiver) {
-        io.to(receiver.id).emit('notifyTyping', sender, receiver);
+        receiver.id.forEach(function (socketId) {
+            io.to(socketId).emit('notifyTyping', sender, receiver);
+        })
     });
 
     // Listen to newUser event sent by client and emit a newUser to the client with new list of online user
