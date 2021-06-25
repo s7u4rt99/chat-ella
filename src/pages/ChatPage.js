@@ -262,7 +262,7 @@ function ChatPage(props) {
 // Function to update chat notifocation count
     function updateChatNotificationCount(userGoogleId) {
         var count = (chatNotificationCount[userGoogleId] === undefined) ? 1 : chatNotificationCount[userGoogleId] + 1;
-        //chatNotificationCount[userId] = count;
+        chatNotificationCount[userGoogleId] = count;
         $('#' + userGoogleId + ' label.chatNotificationCount').html(count);
         $('#' + userGoogleId + ' label.chatNotificationCount').show();
     }
