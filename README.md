@@ -39,14 +39,14 @@ the parties involved is kept only between the parties involved.
 #### **Implemented Features**
 1. Implemented login page with login with google option
 2. Peer-to-peer messaging app which does not store information of chats online
+3. Log out button
+4. Unique accounts for each user based on email
+5. Ability to take photos and send to each other/ from gallery
 
 #### **Features to be implemented in the future**
-1. Log out button (by mid June)
-2. Unique accounts for each user based on email (by end June)
-3. Ability to take photos and send to each other/ from gallery (by end June)
-4. Ability to make voice/video calls (by mid July)
-5. Password lock supported for any chats (by mid July)
-6. GPS system to allow sharing of live locations (by August)
+1. Ability to make voice/video calls (by mid July)
+2. Password lock supported for any chats (by mid July)
+3. GPS system to allow sharing of live locations (by end July)
 
 ### **<u>How are we different from similar platforms?</u>**
 
@@ -61,6 +61,68 @@ on each device itself, improving privacy and security of the chats.
 
 ### **<u>Tech Stack</u>**
 ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
+
+### **<u>Developer guide</u>**
+### ***<u>How to set up</u>***
+1. Download this file into your computer. This is the client side file.
+2. Download the socket io server from https://github.com/s7u4rt99/chatella_server
+3. After editing the code, to run it on your machine, firstly, run "yarn start" in this folder to open up the react app. Then, go into the server code folder and run "yarn start" to start the socket io server.
+4. Now, the react front end would connect to the socket io back and you can open new tabs and start chatting with them on your machine.
+
+### ***<u>Tests</u>***
+|S/N|Test             |Date   |Stuart<br>(hrs)|Zheng Lin<br>(hrs)|Remarks|
+|---|---------------------|-------|-----------|--------------|-------|
+
+### ***<u>Elaborate on the test plan</u>***
+
+### ***<u>Elaborate on the test plan</u>***
+
+### ***<u>Software Engineering Principles</u>***
+**SOLID**
+
+<U>S  -   SRP (Single Responsibility Principle)</U>
+
+Every function in our client and server side each has their own unique purposes. They complement each other to complete complex tasks.
+
+<u>O -   OCP (Open Closed Principle)</u>
+
+Our code is open for extension and closed for modification.
+
+<u>L  -   LSP (Liskov Substitution Principle)</u>
+
+Every child class in our code are substitutable for their parent class.
+
+<u>I   -   ISP (Interface Segregation Principle)</u>
+
+Our interface for the client are flexible, and clients can choose which functions they would like to use.
+
+<u>D -   DIP (Dependency Inversion Principle)</u>
+
+Our code follows this principle, and our high level modules do not depend on low level modules.
+
+**KISS**
+
+Keep It Simple, Stupid
+
+We strive to keep our code as simple as possible to ensure that it is readable, understandable and extendable.
+We try out best not to complicate things in our code.
+
+### ***<u>Prototype</u>***
+<U>Sign in Page</U>
+![](./SignInPage.png)
+
+<U>Sign up Page</U>
+![](./SignUpPage.png)
+
+<U>Chat Page (Without Chat Opened)</U>
+![](./ChatPageWOChatOpened.png)
+
+<U>Chat Page (With Chat Opened)</U>
+![](./ChatPageWithChatOpened.png)
+
+<U>Chat Page (With Chat Opened)</U>
+![](./ChatPageWithMessages.png)
+      
 
 ### **<u>Project log</u>**
 
@@ -110,12 +172,12 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 |42|Debug/improve features|24/6/21|8|6|Stuart: Debug sending photo feature <br> ZL: Implementing feature of unique google accounts|
 |43|Debug|25/6/21|4|5|Stuart: Fixed sign in page + CSS bug + hosting on heroku bug <br> ZL: Fixed unique account according to google id, <br> implemented multi window multi user chat that updates simultaneously |
 |44|Hosting|26/6/21|4|2|Try to host backend and frontend on Heroku|
-|45|Debugging + Updating documentation|27/6/21|1|4|Debugged Heroku and CSS bugs, update documentation|
+|45|Debugging + Updating documentation|27/6/21|5|4|Debugged Heroku and CSS bugs, update documentation|
 
 
 |Total Hours|Stuart|Zheng Lin|
 |-----------|------|---------|
-|217.5|111.5|106|
+|217.5|115.5|106|
 
 ### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
