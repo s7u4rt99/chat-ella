@@ -75,8 +75,6 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 
 ### ***<u>Elaborate on the test plan</u>***
 
-### ***<u>Elaborate on the test plan</u>***
-
 ### ***<u>Software Engineering Principles</u>***
 **SOLID**
 
