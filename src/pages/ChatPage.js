@@ -387,24 +387,24 @@ function ChatPage(props) {
         <>
 
             <AppShell/>
-            <div className="onlineUsersContainer">
-                <FirebaseAuthConsumer>
-                    {({user}) => <OnlineUsers username={user.displayName} onload={loginMe(user.displayName, user.uid)}
-                                              selectUserChatBox={selectUserChatBox}/>}
-                </FirebaseAuthConsumer>
-            </div>
-            <div className="chatContainer">
-                <ul id="messages"/>
-                <span id="notifyTyping"/>
-                <form id="form" action="" onSubmit={(e) => submitFunction(e)}>
-                    <input type="hidden" id="user" value=""/>
-                    <input id="m" autoComplete="off" placeholder="Type your message here.."
-                           onKeyUp={() => notifyTyping()}/>
-                    <input onChange={selectFile} type="file" multiple accept="image/*"/>
-                    <input type="submit" id="button" value="Send"/>
-                </form>
-            </div>
-        </>
+                <div className="onlineUsersContainer">
+                    <FirebaseAuthConsumer>
+                        {({user}) => <OnlineUsers username={user.displayName} onload={loginMe(user.displayName, user.uid)}
+                                                selectUserChatBox={selectUserChatBox}/>}
+                    </FirebaseAuthConsumer>
+                </div>
+                <div className="chatContainer">
+                    <ul id="messages"/>
+                    <span id="notifyTyping"/>
+                    <form id="form" action="" onSubmit={(e) => submitFunction(e)}>
+                        <input type="hidden" id="user" value=""/>
+                        <input id="m" autoComplete="off" placeholder="Type your message here.."
+                                onKeyUp={() => notifyTyping()}/>
+                        <input onChange={selectFile} type="file" multiple accept="image/*"/>
+                        <input type="submit" id="button" value="Send"/>
+                    </form>
+                </div>
+            </>
     );
 }
 
