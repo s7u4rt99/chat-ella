@@ -5,6 +5,8 @@ import io from "socket.io-client";
 import {useEffect, dangerouuslySetInnerHTML, useState} from "react";
 import AppShell from "../components/Header/AppShell";
 import {FirebaseAuthConsumer} from "@react-firebase/auth";
+
+
 import ScriptTag from 'react-script-tag'
 // import {appendChatMessage, loginMe, selectUserChatBox} from "../chat";
 // import openSocket from "socket.io-client";
@@ -248,6 +250,9 @@ function ChatPage(props) {
         } else {
             allChatMessages[message.senderGoogleId] = new Array(message);
         }
+
+        let messages = document.getElementById('messages')
+        messages && messages.scrollTo(0, messages.scrollHeight)
         return false;
     }
 
