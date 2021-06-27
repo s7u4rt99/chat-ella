@@ -118,7 +118,7 @@ We try out best not to complicate things in our code.
 <U>Chat Page (With Chat Opened)</U>
 ![](./ChatPageWithChatOpened.png)
 
-<U>Chat Page (With Chat Opened)</U>
+<U>Chat Page (With Chat Opened & Sending Messsages)</U>
 ![](./ChatPageWithMessages.png)
       
 
