@@ -181,3 +181,5 @@ We try out best not to complicate things in our code.
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
 
 https://codepen.io/B99-AHMAD/pen/ExZeypj
+
+https://www.callicoder.com/software-development-principles/
