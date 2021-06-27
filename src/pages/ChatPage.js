@@ -65,7 +65,7 @@ function ChatPage(props) {
             }
             setTimeout(function () {
                 $('#notifyTyping').text('');
-            }, 2000);
+            }, 5000);
         });
 
         // Listen to onlineUsers event to update the list of online users
