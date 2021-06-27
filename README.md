@@ -1,6 +1,6 @@
 # Chatella
 
-### **<u>Try it out:</u>** https://chatella-nrejmbycz-s7u4rt99.vercel.app/
+### **<u>Try it out:</u>** https://chatella.herokuapp.com/
 
 ### **<u>Proposed Level of Achievement:</u>** Apollo 11
 
@@ -89,10 +89,33 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 |21|Debugging|29/5/21|3|4|Stuart: Combining SocketIo & React <br> ZL: Attempt integrate login page with chat-app|
 |22|Deploy App <br> Debug <br> Combine back/front-end into one repo|30/5/21|8|7|Deploy on Vercel + Heroku <br> Solving bugs stopping deployment|
 |23|Create Readme and video|31/5/21|4|4|Milestone 1 submission|
+|24|Peer Evaluation|02/6/21|1.5|1.5|Read feedback and provide feedback for Milestone 1 submission|
+|25|Debug trying to connect socket with React|02/6/21|2|2|Port app over to fully React|
+|26|Debug trying to connect socket with React|07/6/21|4.5|2|Get Socket.io to work in React|
+|27|Debug trying to connect socket with React <br> Consult|08/6/21|3|3|Get Socket.io to work in React|
+|28|Debug trying to fix refresh/onclick bug|09/6/21|2|3|Get Socket.io to work in React|
+|29|Debugging|10/6/21|1|2|Stuart: Fixed refresh bug <br> ZL: Trying to debug onclick by converting jquery into react|
+|30|Added logout and Appshell|12/6/21|0|1|Added an appshell to chatpage with logout functionality|
+|31|Debug and added login feature|13/6/21|3|3|Stuart: Added login with email and password feature <br> ZL:Debug appshell overlap & attempt to disconnect socket during logout |
+|32|Debugging|14/6/21|3|3|Debugging multi-connection bug|
+|33|Debug & consult|15/6/21|4.5|4|Stuart: Double-connection bug <br> ZL: Login and selectUserChatBox bug |
+|34|Debug|16/6/21|2|2|Fixed double connection and still debugging selectUserChatBox bug|
+|35|Debug|17/6/21|2|2|Try to debug selectUserChatBox bug|
+|36|Debug|18/6/21|2|1|Try to debug selectUserChatBox bug|
+|37|Fixed selectUserChatBox bug|19/6/21|0|2|Squashed selectUserChatBox bug|
+|38|Fix interface|20/6/21|2|0|fix interface|
+|39|Watch UI/UX workshop P1 |21/6/21|1.5|0|Setting up and watching part of UI/UX workshop part 1|
+|40|Watch MC video|22/6/21|4.5|0|Watch UX & UI workshop|
+|41|Add features|23/6/21|3|3|Stuart: sending photo feature <br> ZL: Save chat history feature by using localStorage(failed)|
+|42|Debug/improve features|24/6/21|8|6|Stuart: Debug sending photo feature <br> ZL: Implementing feature of unique google accounts|
+|43|Debug|25/6/21|4|5|Stuart: Fixed sign in page + CSS bug + hosting on heroku bug <br> ZL: Fixed unique account according to google id, <br> implemented multi window multi user chat that updates simultaneously |
+|44|Hosting|26/6/21|4|2|Try to host backend and frontend on Heroku|
+|45|Debugging + Updating documentation|27/6/21|1|4|Debugged Heroku and CSS bugs, update documentation|
+
 
 |Total Hours|Stuart|Zheng Lin|
 |-----------|------|---------|
-|107|53|54|
+|217.5|111.5|106|
 
 ### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
