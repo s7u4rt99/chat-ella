@@ -205,8 +205,24 @@ function ChatPage(props) {
         var destination = message.destination;
         if (message.senderGoogleId === myUser.googleId && message.sender.includes(message.origin)) {
             // playNewMessageAudio();
-            //var cssClass = (message.senderGoogleId === myUser.googleId) ? 'chatMessageRight' : 'chatMessageLeft';
-            $('#messages').append('<li class="chatMessageRight">' + message.text + '</li>');
+            var cssClass = 'chatMessageRight';
+            if (message.type === "file") {
+                appendPhoto(message, cssClass)
+                // const blob = new Blob([message.body], { type: message.type });
+                // const reader = new FileReader();
+                // let imageSrc = null
+                // reader.readAsDataURL(blob);
+                // reader.onloadend = function() {
+                //     imageSrc = reader.result;
+                //     $('#messages').append('<li class="' + cssClass + '"><img style={{width:150, height:"auto"}} src="' + imageSrc + '" /></li>');
+                // }
+                // let imageSrc = reader.result;
+            } else {
+                // playNewMessageNotificationAudio();
+
+                // var cssClass = (message.sender === myUser.id) ? 'chatMessageRight' : 'chatMessageLeft';
+                $('#messages').append('<li class="' + cssClass + '">' + message.text + '</li>');
+            }
         } else {
             // playNewMessageNotificationAudio();
             updateChatNotificationCount(message.senderGoogleId);
@@ -217,6 +233,8 @@ function ChatPage(props) {
         } else {
             allChatMessages[message.receiverGoogleId] = new Array(message);
         }
+        let messages = document.getElementById('messages')
+        messages && messages.scrollTo(0, messages.scrollHeight)
         return false;
     }
 
