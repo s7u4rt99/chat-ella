@@ -190,7 +190,7 @@ We try out best not to complicate things in our code.
 
 |Total Hours|Stuart|Zheng Lin|
 |-----------|------|---------|
-|217.5|119|107.5|
+|226.5|119|107.5|
 
 ### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
