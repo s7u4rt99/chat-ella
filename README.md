@@ -185,11 +185,12 @@ We try out best not to complicate things in our code.
 |43|Debug|25/6/21|4|5|Stuart: Fixed sign in page + CSS bug + hosting on heroku bug <br> ZL: Fixed unique account according to google id, <br> implemented multi window multi user chat that updates simultaneously |
 |44|Hosting|26/6/21|4|2|Try to host backend and frontend on Heroku|
 |45|Debugging + Updating documentation|27/6/21|5|4|Debugged Heroku and CSS bugs, update documentation|
+|46|Updating ReadMe and filming video for MS2|3.5||Updating ReadMe and filming video for MS2||
 
 
 |Total Hours|Stuart|Zheng Lin|
 |-----------|------|---------|
-|217.5|115.5|106|
+|217.5|119|106|
 
 ### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
