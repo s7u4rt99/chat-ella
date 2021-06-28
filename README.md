@@ -69,9 +69,12 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 3. After editing the code, to run it on your machine, firstly, run "yarn start" in this folder to open up the react app. Then, go into the server code folder and run "yarn start" to start the socket io server.
 4. Now, the react front end would connect to the socket io back and you can open new tabs and start chatting with them on your machine.
 
-### ***<u>Tests</u>***
-|S/N|Test             |Date   |Stuart<br>(hrs)|Zheng Lin<br>(hrs)|Remarks|
+### ***<u>Testing</u>***
+|S/N|Test             |Steps Taken   |Expected Output|Actual Output|Remarks|
 |---|---------------------|-------|-----------|--------------|-------|
+|1|Quality Assurance (Code Review)|Reviewed each other code after we debugged or added a new feature|Understand the added code|Understand the added code|NIL|
+|2|Quality Assurance (Static Analysis)|Analysed code for unused methods or variables|Removed the unused variables / methods|Removed most unused variables / methods| Left some unused variables for debugging|
+|3| Exploratory testing
 
 ### ***<u>Elaborate on the test plan</u>***
 
