@@ -39,14 +39,14 @@ the parties involved is kept only between the parties involved.
 #### **Implemented Features**
 1. Implemented login page with login with google option
 2. Peer-to-peer messaging app which does not store information of chats online
+3. Log out button
+4. Unique accounts for each user based on email
+5. Ability to take photos and send to each other/ from gallery
 
 #### **Features to be implemented in the future**
-1. Log out button (by mid June)
-2. Unique accounts for each user based on email (by end June)
-3. Ability to take photos and send to each other/ from gallery (by end June)
-4. Ability to make voice/video calls (by mid July)
-5. Password lock supported for any chats (by mid July)
-6. GPS system to allow sharing of live locations (by August)
+1. Ability to make voice/video calls (by mid July)
+2. Password lock supported for any chats (by mid July)
+3. GPS system to allow sharing of live locations (by end July)
 
 ### **<u>How are we different from similar platforms?</u>**
 
@@ -61,6 +61,80 @@ on each device itself, improving privacy and security of the chats.
 
 ### **<u>Tech Stack</u>**
 ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
+
+### **<u>Developer guide</u>**
+### ***<u>How to set up</u>***
+1. Download this file into your computer. This is the client side file.
+2. Download the socket io server from https://github.com/s7u4rt99/chatella_server
+3. After editing the code, to run it on your machine, firstly, run "yarn start" in this folder to open up the react app. Then, go into the server code folder and run "yarn start" to start the socket io server.
+4. Now, the react front end would connect to the socket io back and you can open new tabs and start chatting with them on your machine.
+
+### ***<u>Testing</u>***
+|S/N|Test             |Steps Taken   |Expected Output|Actual Output|Remarks|
+|---|---------------------|-------|-----------|--------------|-------|
+|1|Quality Assurance (Code Review)|Reviewed each other code after we debugged or added a new feature|Understand the added code|Understand the added code|NIL|
+|2|Quality Assurance (Static Analysis)|Analysed code for unused methods or variables|Removed the unused variables / methods|Removed most unused variables / methods| Left some unused variables for debugging|
+|3|Exploratory Testing|Tested sign up page with username|Opens the chat page after signing up and displays username at the top|Opens the chat page after signing up and displays username at the top|NIL|
+|4|Exploratory Testing|Tested sign in page|Logs user in with username selected during sign up / google account name|Logs user in with username selected during sign up / google account name|NIL
+|5|Exploratory Testing|Tested log out button|Logs user out and disconnects from backend|Logs user out and disconnects from backend|NIL|
+|6|Exploratory Testing|Tested send message button|Sends message to other user|Sends message to other user|NIL|
+|7|Exploratory Testing|Tested send file button to send photos|Ability to send photos on computer. Ability to send photos and take photos on phone|Ability to send photos on computer. Ability to send photos and take photos on phone|NIL|
+|8|Exploratory Testing|Testing the toggle between chats|Displays messages with other user which user toggled to|Displays messages with other user which user toggled to|NIL|
+|9|Unit Testing|Tested selectUserChatBox method|Opens chat with selected user and darkens the name in the online users column|Opens chat with selected user and darkens the name in the online users column|Could not integrate it with react at the start, but works fine now|
+|10|Unit Testing|Tested notifyTyping method|Notifies user that the person who he/she is talking to is typing|Notifies user that the person who he/she is talking to is typing|NIL|
+|11|Unit Testng|Tested loadChatBox method|Correctly loads the chat box with the user in the correct order|Correctly loads the chat box with the user in the correct order|Due to async programming, it had a bug and the photos were processed slower than normal messages, thus completing last and ending at the bottom. It is fixed now.|
+|12|Integration Testing|Tested connection between react and socketIO server|Able to connect front end to server and chat with online users|Able to connect front end to server and chat with online users|Had an initial bug due to the version of socketIO which does not allow Cross-Origin Resource Sharing. Changed it to the correct version and it works.|
+|13|Integration Testing|Tested ability to send messages/photos to other users through socketIO server|Messages/Photos get sent to the correct users|Messages/Photos get sent to the correct users|NIL|
+|14|Integration Testing|Tested authentication by using firebase in react|User is able to create an account with correct username and login|User is able to create an account with correct username and login|NIL|
+|15|System Testing (Performance Testing)|Tested with multiple users online|Users are able to chat with each other and toggle between chats|Users are able to chat with each other and toggle between chats|NIL|
+|16|System Testing (Compatibility Testing)|Tested with different OS (Windows and mac)|Interface are similar and usable|Interface are similar and usable|Have not gotten interface to look good on mobile yet, but it still works|
+
+### ***<u>Software Engineering Principles</u>***
+**SOLID**
+
+<U>S  -   SRP (Single Responsibility Principle)</U>
+
+Every function in our client and server side each has their own unique purposes. They complement each other to complete complex tasks.
+
+<u>O -   OCP (Open Closed Principle)</u>
+
+Our code is open for extension and closed for modification.
+
+<u>L  -   LSP (Liskov Substitution Principle)</u>
+
+Every child class in our code are substitutable for their parent class.
+
+<u>I   -   ISP (Interface Segregation Principle)</u>
+
+Our interface for the client are flexible, and clients can choose which functions they would like to use.
+
+<u>D -   DIP (Dependency Inversion Principle)</u>
+
+Our code follows this principle, and our high level modules do not depend on low level modules.
+
+**KISS**
+
+Keep It Simple, Stupid
+
+We strive to keep our code as simple as possible to ensure that it is readable, understandable and extendable.
+We try out best not to complicate things in our code.
+
+### ***<u>Prototype</u>***
+<U>Sign in Page</U>
+![](./SignInPage.png)
+
+<U>Sign up Page</U>
+![](./SignUpPage.png)
+
+<U>Chat Page (Without Chat Opened)</U>
+![](./ChatPageWOChatOpened.png)
+
+<U>Chat Page (With Chat Opened)</U>
+![](./ChatPageWithChatOpened.png)
+
+<U>Chat Page (With Chat Opened & Sending Messsages)</U>
+![](./ChatPageWithMessages.png)
+      
 
 ### **<u>Project log</u>**
 
@@ -110,14 +184,17 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 |42|Debug/improve features|24/6/21|8|6|Stuart: Debug sending photo feature <br> ZL: Implementing feature of unique google accounts|
 |43|Debug|25/6/21|4|5|Stuart: Fixed sign in page + CSS bug + hosting on heroku bug <br> ZL: Fixed unique account according to google id, <br> implemented multi window multi user chat that updates simultaneously |
 |44|Hosting|26/6/21|4|2|Try to host backend and frontend on Heroku|
-|45|Debugging + Updating documentation|27/6/21|1|4|Debugged Heroku and CSS bugs, update documentation|
+|45|Debugging + Updating documentation|27/6/21|5|4|Debugged Heroku and CSS bugs, update documentation|
+|46|Updating ReadMe and filming video for MS2|28/5/21|3.5|1.5|Updating ReadMe and filming video for MS2|
 
 
 |Total Hours|Stuart|Zheng Lin|
 |-----------|------|---------|
-|217.5|111.5|106|
+|226.5|119|107.5|
 
 ### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
 
 https://codepen.io/B99-AHMAD/pen/ExZeypj
+
+https://www.callicoder.com/software-development-principles/
