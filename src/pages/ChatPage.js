@@ -319,64 +319,71 @@ function ChatPage(props) {
     const submitFunction = (e) => {
         e.preventDefault();
         var message = {};
-        const text = $('#m').val();
-
-        if (file) {
-            message.sender = myUser.id;
-            message.senderGoogleId = myUser.googleId;
-            message.receiver = myFriend.id;//array
-            message.receiverGoogleId = myFriend.googleId;
-            message.type = "file";
-            message.mimeType = file.type;
-            message.fileName = file.name;
-            message.body = file;
-            file = null;
-            $('#m').val('').focus();
-            // need to append to html
-            appendPhoto(message, "chatMessageRight")
-            // const blob = new Blob([message.body], { type: message.type });
-            // const reader = new FileReader();
-            // let imageSrc = null
-            // reader.readAsDataURL(blob);
-            // reader.onloadend = function() {
-            //     imageSrc = reader.result;
-            //     console.log("imageSrc=", imageSrc);
-            //     $('#messages').append('<li class="chatMessageRight"><img style={{width:150, height:"auto"}} src="' + imageSrc + '" /></li>');
-            // }
-            // let imageSrc = reader.result;
-            // alt={' + message.fileName + '}
-        } else {
-            if (text !== '') {
-                message.text = text;
+        const text = $("#m").val();
+        if (e.target.value !== undefined && e.target.value !== null) {
+            if (file) {
                 message.sender = myUser.id;
                 message.senderGoogleId = myUser.googleId;
-                message.receiver = myFriend.id;
+                message.receiver = myFriend.id; //array
                 message.receiverGoogleId = myFriend.googleId;
-                message.type = "text";
-                console.log(message.text);
-                console.log('myfriendid arr size: ' + myFriend.id.length + 'myuserid arr size: ' + myUser.id.length);
-                $('#messages').append('<li class="chatMessageRight">' + message.text + '</li>');
-                // if (allChatMessages[myFriend.id] !== undefined) {
-                //     allChatMessages[myFriend.id].push(message);
-                // } else {
-                //     allChatMessages[myFriend.id] = new Array(message);
+                message.type = "file";
+                message.mimeType = file.type;
+                message.fileName = file.name;
+                message.body = file;
+                file = null;
+                $("#m").val("").focus();
+                // need to append to html
+                appendPhoto(message, "chatMessageRight");
+                // const blob = new Blob([message.body], { type: message.type });
+                // const reader = new FileReader();
+                // let imageSrc = null
+                // reader.readAsDataURL(blob);
+                // reader.onloadend = function() {
+                //     imageSrc = reader.result;
+                //     console.log("imageSrc=", imageSrc);
+                //     $('#messages').append('<li class="chatMessageRight"><img style={{width:150, height:"auto"}} src="' + imageSrc + '" /></li>');
                 // }
-                // socket.emit('chatMessage', message);
+                // let imageSrc = reader.result;
+                // alt={' + message.fileName + '}
+            } else {
+                if (text !== "") {
+                    message.text = text;
+                    message.sender = myUser.id;
+                    message.senderGoogleId = myUser.googleId;
+                    message.receiver = myFriend.id;
+                    message.receiverGoogleId = myFriend.googleId;
+                    message.type = "text";
+                    console.log(message.text);
+                    console.log(
+                        "myfriendid arr size: " +
+                        myFriend.id.length +
+                        "myuserid arr size: " +
+                        myUser.id.length
+                    );
+                    $("#messages").append(
+                        '<li class="chatMessageRight">' + message.text + "</li>"
+                    );
+                    // if (allChatMessages[myFriend.id] !== undefined) {
+                    //     allChatMessages[myFriend.id].push(message);
+                    // } else {
+                    //     allChatMessages[myFriend.id] = new Array(message);
+                    // }
+                    // socket.emit('chatMessage', message);
+                }
             }
 
+            if (allChatMessages[myFriend.googleId] !== undefined) {
+                allChatMessages[myFriend.googleId].push(message);
+            } else {
+                allChatMessages[myFriend.googleId] = new Array(message);
+            }
+            socket.emit("chatMessage", message);
+            let messages = document.getElementById("messages");
+            messages && messages.scrollTo(0, messages.scrollHeight);
+            $("#m").val("").focus();
+            return false;
         }
-
-        if (allChatMessages[myFriend.googleId] !== undefined) {
-            allChatMessages[myFriend.googleId].push(message);
-        } else {
-            allChatMessages[myFriend.googleId] = new Array(message);
-        }
-        socket.emit('chatMessage', message);
-        let messages = document.getElementById('messages')
-        messages && messages.scrollTo(0, messages.scrollHeight)
-        $('#m').val('').focus();
-        return false;
-    }
+    };
 
     const notifyTyping = () => {
         socket.emit('notifyTyping', myUser, myFriend);
