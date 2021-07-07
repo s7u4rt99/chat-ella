@@ -30,18 +30,18 @@ function ChatPage(props) {
     var counter = 0;
 
     // const socketRef = useRef()
-    const socket = io("http://localhost:4000", {
-        // withCredentials: true
-        // extraHeaders: {
-        //     "my-custom-header": "abcd"
-        // }
-    });
-    // const socket = io("https://chatella-server.herokuapp.com/", {
-    //   // withCredentials: true
-    //   // extraHeaders: {
-    //   //     "my-custom-header": "abcd"
-    //   // }
+    // const socket = io("http://localhost:4000", {
+    //     // withCredentials: true
+    //     // extraHeaders: {
+    //     //     "my-custom-header": "abcd"
+    //     // }
     // });
+    const socket = io("https://chatella-server.herokuapp.com/", {
+      // withCredentials: true
+      // extraHeaders: {
+      //     "my-custom-header": "abcd"
+      // }
+    });
     // var socket = io.connect(SOCKET_SERVER_URL);//;
     useEffect(() => {
         // let socket = io.connect(SOCKET_SERVER_URL);
