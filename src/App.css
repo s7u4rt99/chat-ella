@@ -5,7 +5,7 @@
     font-family: "Nunito", sans-serif;
 }
 
-.title{
+.title {
     font-size: 30pt;
     font-weight: 700;
     display: flex;
@@ -15,10 +15,9 @@
     color: #00e4ff;
     margin-top: 20px;
     margin-bottom: 30px;
-
 }
 
-.login-p-subtitle{
+.login-p-subtitle {
     color: #5352ed;
 }
 
@@ -101,6 +100,22 @@ button {
 
 .login .loginContainer .btnContainer p span:hover {
     color: red;
+}
+
+.login .loginContainer .btnContainer p1 {
+    color: red;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.login .loginContainer .btnContainer p1:hover {
+    color: darkred;
 }
 
 .login .loginContainer .errorMsg {

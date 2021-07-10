@@ -26,10 +26,12 @@ export default function App() {
     const [passwordError, setPasswordError] = useState("");
     const [hasAccount, setHasAccount] = useState(false);
     const [username, setUsername] = useState("");
+    const [forgotPassword, setForgotPassword] = useState(false);
 
     const clearInputs = () => {
         setEmail("");
         setPassword("");
+        setUsername("");
     };
 
     const clearErrors = () => {
@@ -81,6 +83,33 @@ export default function App() {
                         setEmailError(err.message);
                         break;
                     case "auth/weak-password":
+                        setPasswordError(err.message);
+                        break;
+                }
+            });
+    };
+
+    const handleForgetPassword = (firebase) => {
+        firebase
+            .auth()
+            .sendPasswordResetEmail(email)
+            .then((userCredential) => {
+                // send verification mail.
+                firebase.auth().signOut();
+                alert("An email has been sent to your email to change your password");
+                setForgotPassword(false);
+                clearErrors();
+                clearInputs();
+                window.location.reload();
+            })
+            .catch((err) => {
+                switch (err.code) {
+                    case "auth/invalid-email":
+                    case "auth/user-disabled":
+                    case "auth/user-not-found":
+                        setEmailError(err.message);
+                        break;
+                    case "auth/wrong-password":
                         setPasswordError(err.message);
                         break;
                 }
@@ -142,6 +171,13 @@ export default function App() {
                         passwordError={passwordError}
                         username={username}
                         setUsername={setUsername}
+                        forgotPassword={forgotPassword}
+                        setForgotPassword={setForgotPassword}
+                        setEmailError={setEmailError}
+                        setPasswordError={setPasswordError}
+                        handleForgetPassword={handleForgetPassword}
+                        clearErrors={clearErrors}
+                        clearInputs={clearInputs}
                     />
                 </IfFirebaseUnAuthed>
                 {/*<IfFirebaseAuthed>*/}
