@@ -4,68 +4,111 @@
 //     IfFirebaseUnAuthed
 // } from "@react-firebase/auth";
 // import Firebase from '@firebase/app'
-import '@firebase/auth'
+import "@firebase/auth";
 import PageLogin from "./pages/LoginPage";
 import PageChat from "./pages/ChatPage";
-import {useState} from "react";
-import {FirebaseAuthConsumer, IfFirebaseAuthed, IfFirebaseAuthedAnd, IfFirebaseUnAuthed} from "@react-firebase/auth";
+import { useState } from "react";
+import {
+    FirebaseAuthConsumer,
+    IfFirebaseAuthed,
+    IfFirebaseAuthedAnd,
+    IfFirebaseUnAuthed,
+} from "@react-firebase/auth";
 import OnlineUsers from "./components/OnlineUsers/OnlineUsers";
 // import "./App.css"
 //import AppShell from "./components/Header/AppShell"
 
-
 export default function App() {
-    const [user, setUser] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [emailError, setEmailError] = useState("")
-    const [passwordError, setPasswordError] = useState('')
-    const [hasAccount, setHasAccount] = useState(false)
-    const [username, setUsername] = useState('')
+    const [user, setUser] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [hasAccount, setHasAccount] = useState(false);
+    const [username, setUsername] = useState("");
 
     const clearInputs = () => {
-        setEmail('')
-        setPassword('')
-    }
+        setEmail("");
+        setPassword("");
+    };
 
     const clearErrors = () => {
-        setEmailError('')
-        setPasswordError('')
-    }
+        setEmailError("");
+        setPasswordError("");
+    };
 
     const handleLogin = (firebase) => {
-        clearErrors()
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(err => {
-            switch (err.code) {
-                case "auth/invalid-email":
-                case "auth/user-disabled":
-                case "auth/user-not-found":
-                    setEmailError(err.message);
-                    break;
-                case "auth/wrong-password":
-                    setPasswordError(err.message);
-                    break;
-            }
-        })
-    }
+        clearErrors();
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then((user) => {
+                console.log(user.user.emailVerified);
+                if (!user.user.emailVerified) {
+                    alert("Please verify your email to proceed");
+                    firebase.auth().signOut();
+                }
+            })
+            .catch((err) => {
+                switch (err.code) {
+                    case "auth/invalid-email":
+                    case "auth/user-disabled":
+                    case "auth/user-not-found":
+                        setEmailError(err.message);
+                        break;
+                    case "auth/wrong-password":
+                        setPasswordError(err.message);
+                        break;
+                }
+            });
+    };
 
     const handleSignup = (firebase) => {
-        clearErrors()
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(function (result) {
-            result.user.updateProfile({displayName: username}).then(r => window.location.reload())
-        }).catch(err => {
-            switch (err.code) {
-                case "auth/email-already-in-use":
-                case "auth/invalid-email":
-                    setEmailError(err.message);
-                    break;
-                case "auth/weak-password":
-                    setPasswordError(err.message);
-                    break;
-            }
-        })
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // send verification mail.
+                userCredential.user.updateProfile({ displayName: username });
+                userCredential.user.sendEmailVerification();
+                firebase.auth().signOut();
+                alert("Email sent");
+            })
+            .catch((err) => {
+                switch (err.code) {
+                    case "auth/email-already-in-use":
+                    case "auth/invalid-email":
+                        setEmailError(err.message);
+                        break;
+                    case "auth/weak-password":
+                        setPasswordError(err.message);
+                        break;
+                }
+            });
+    };
 
-    }
+    // const handleSignup = (firebase) => {
+    //   clearErrors();
+    //   firebase
+    //     .auth()
+    //     .createUserWithEmailAndPassword(email, password)
+    //     .then(function (result) {
+    //       result.user
+    //         .updateProfile({ displayName: username })
+    //         .then((r) => window.location.reload());
+    //     })
+    //     .catch((err) => {
+    //       switch (err.code) {
+    //         case "auth/email-already-in-use":
+    //         case "auth/invalid-email":
+    //           setEmailError(err.message);
+    //           break;
+    //         case "auth/weak-password":
+    //           setPasswordError(err.message);
+    //           break;
+    //       }
+    //     });
+    // };
     //
     // const authListener = () => {
     //     fire.auth().onAuthStateChanged(user => {
@@ -102,14 +145,16 @@ export default function App() {
                     />
                 </IfFirebaseUnAuthed>
                 {/*<IfFirebaseAuthed>*/}
-                <IfFirebaseAuthedAnd filter={({user}) => {
-                    return user.displayName !== null
-                }}>
+                <IfFirebaseAuthedAnd
+                    filter={({ user }) => {
+                        return user.displayName !== null && user.emailVerified;
+                    }}
+                >
                     {/*<PageChat user={user}/>*/}
                     {/*<FirebaseAuthConsumer>*/}
-                    <PageChat/>
+                    <PageChat />
                     {/*    <PageChat onLoad={()=>window.location.reload()}/>*/}
-                        {/*{({user, isSignedIn}) => user.displayName != null ? (<PageChat/>) : (<div></div>)}*/}
+                    {/*{({user, isSignedIn}) => user.displayName != null ? (<PageChat/>) : (<div></div>)}*/}
                     {/*</FirebaseAuthConsumer>*/}
                 </IfFirebaseAuthedAnd>
                 {/*</IfFirebaseAuthed>*/}
@@ -138,6 +183,3 @@ export default function App() {
     //         </div>
     // );
 }
-
-
-
