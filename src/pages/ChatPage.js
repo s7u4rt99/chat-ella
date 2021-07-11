@@ -29,7 +29,7 @@ function ChatPage(props) {
     var myFriend = {};
     var $ = require("jquery");
     var globalCount = 0;
-    var title = document.title;
+    var title = 'Chatella' ;
 
     // const socketRef = useRef()
     // const socket = io("http://localhost:4000", {
@@ -314,16 +314,25 @@ function ChatPage(props) {
                 ? 1
                 : chatNotificationCount[userGoogleId] + 1;
         chatNotificationCount[userGoogleId] = count;
-        globalCount = count;
+        //globalCount = count;
+        globalCount = globalCount + 1;
         document.title = '(' + globalCount + ') ' + title;
+        if (globalCount === 0){
+            document.title = title;
+        }
         $("#" + userGoogleId + " label.chatNotificationCount").html(count);
         $("#" + userGoogleId + " label.chatNotificationCount").show();
     }
 
     // Function to clear chat notification count to 0
     function clearChatNotificationCount(userGoogleId) {
-        globalCount = globalCount - chatNotificationCount[userGoogleId];
-        chatNotificationCount[userGoogleId] = 0;
+        if( chatNotificationCount[userGoogleId] === undefined){
+            chatNotificationCount[userGoogleId] = 0;
+        } else {
+            globalCount = globalCount - chatNotificationCount[userGoogleId];
+        }
+
+        console.log(globalCount)
         if (globalCount === 0){
             document.title = title;
         } else {
