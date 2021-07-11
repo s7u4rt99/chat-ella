@@ -95,7 +95,7 @@ function PageLogin(props) {
                                 onClick={() => {
                                     setForgotPassword(false);
                                     clearErrors();
-                                    clearInputs();
+                                    // clearInputs();
                                 }}
                             >
                 Back
@@ -143,7 +143,7 @@ function PageLogin(props) {
                                 onClick={() => {
                                     setHasAccount(!hasAccount);
                                     clearErrors();
-                                    clearInputs();
+                                    // clearInputs();
                                 }}
                             >
                 Sign up
@@ -153,7 +153,7 @@ function PageLogin(props) {
                             onClick={() => {
                                 setForgotPassword(true);
                                 clearErrors();
-                                clearInputs();
+                                // clearInputs();
                             }}
                         >
                             Forgot password?
@@ -218,7 +218,7 @@ function PageLogin(props) {
                                 onClick={() => {
                                     setHasAccount(!hasAccount);
                                     clearErrors();
-                                    clearInputs();
+                                    // clearInputs();
                                 }}
                             >
                 Sign in
@@ -228,7 +228,7 @@ function PageLogin(props) {
                             onClick={() => {
                                 setForgotPassword(true);
                                 clearErrors();
-                                clearInputs();
+                                // clearInputs();
                             }}
                         >
                             Forgot password?

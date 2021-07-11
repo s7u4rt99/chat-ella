@@ -41,40 +41,49 @@ export default function App() {
 
     const handleLogin = (firebase) => {
         clearErrors();
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .then((user) => {
-                console.log(user.user.emailVerified);
-                if (!user.user.emailVerified) {
-                    alert("Please verify your email to proceed");
-                    firebase.auth().signOut();
-                }
-            })
-            .catch((err) => {
-                switch (err.code) {
-                    case "auth/invalid-email":
-                    case "auth/user-disabled":
-                    case "auth/user-not-found":
-                        setEmailError(err.message);
-                        break;
-                    case "auth/wrong-password":
-                        setPasswordError(err.message);
-                        break;
-                }
-            });
+        console.log(password);
+        if (!password) {
+            alert("Please enter your password")
+        } else {
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(email.trim(), password)
+                .then((user) => {
+                    console.log(user.user.emailVerified);
+                    if (!user.user.emailVerified) {
+                        alert("Please verify your email to proceed");
+                        firebase.auth().signOut();
+                    }
+                    clearInputs();
+                    clearErrors();
+                })
+                .catch((err) => {
+                    switch (err.code) {
+                        case "auth/invalid-email":
+                        case "auth/user-disabled":
+                        case "auth/user-not-found":
+                            setEmailError(err.message);
+                            break;
+                        case "auth/wrong-password":
+                            setPasswordError(err.message);
+                            break;
+                    }
+                });
+        }
     };
 
     const handleSignup = (firebase) => {
         firebase
             .auth()
-            .createUserWithEmailAndPassword(email, password)
+            .createUserWithEmailAndPassword(email.trim(), password)
             .then((userCredential) => {
                 // send verification mail.
                 userCredential.user.updateProfile({ displayName: username });
                 userCredential.user.sendEmailVerification();
                 firebase.auth().signOut();
                 alert("Email sent");
+                clearInputs();
+                clearErrors();
             })
             .catch((err) => {
                 switch (err.code) {
@@ -92,7 +101,7 @@ export default function App() {
     const handleForgetPassword = (firebase) => {
         firebase
             .auth()
-            .sendPasswordResetEmail(email)
+            .sendPasswordResetEmail(email.trim())
             .then((userCredential) => {
                 // send verification mail.
                 firebase.auth().signOut();
