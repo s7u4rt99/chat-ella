@@ -41,35 +41,30 @@ export default function App() {
 
     const handleLogin = (firebase) => {
         clearErrors();
-        console.log(password);
-        if (!password) {
-            alert("Please enter your password")
-        } else {
-            firebase
-                .auth()
-                .signInWithEmailAndPassword(email.trim(), password)
-                .then((user) => {
-                    console.log(user.user.emailVerified);
-                    if (!user.user.emailVerified) {
-                        alert("Please verify your email to proceed");
-                        firebase.auth().signOut();
-                    }
-                    clearInputs();
-                    clearErrors();
-                })
-                .catch((err) => {
-                    switch (err.code) {
-                        case "auth/invalid-email":
-                        case "auth/user-disabled":
-                        case "auth/user-not-found":
-                            setEmailError(err.message);
-                            break;
-                        case "auth/wrong-password":
-                            setPasswordError(err.message);
-                            break;
-                    }
-                });
-        }
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(email.trim(), password)
+            .then((user) => {
+                console.log(user.user.emailVerified);
+                if (!user.user.emailVerified) {
+                    alert("Please verify your email to proceed");
+                    firebase.auth().signOut();
+                }
+                clearInputs();
+                clearErrors();
+            })
+            .catch((err) => {
+                switch (err.code) {
+                    case "auth/invalid-email":
+                    case "auth/user-disabled":
+                    case "auth/user-not-found":
+                        setEmailError(err.message);
+                        break;
+                    case "auth/wrong-password":
+                        setPasswordError(err.message);
+                        break;
+                }
+            });
     };
 
     const handleSignup = (firebase) => {
