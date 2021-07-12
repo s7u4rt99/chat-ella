@@ -421,6 +421,7 @@ function ChatPage(props) {
         $("#m").val("").focus();
         // need to append to html
         appendPhoto(message, "chatMessageRight");
+        $("#sendFile").val("");
         // const blob = new Blob([message.body], { type: message.type });
         // const reader = new FileReader();
         // let imageSrc = null
@@ -507,7 +508,13 @@ function ChatPage(props) {
             placeholder="Type your message here.."
             onKeyUp={() => notifyTyping()}
           />
-          <input onChange={selectFile} type="file" multiple accept="image/*" />
+          <input
+            id="sendFile"
+            onChange={selectFile}
+            type="file"
+            multiple
+            accept="image/*"
+          />
           <input type="submit" id="button" value="Send" />
         </form>
       </div>
