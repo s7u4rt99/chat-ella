@@ -62,8 +62,12 @@ import {
 } from "@material-ui/core";
 import { useState } from "react";
 
-function AppShell() {
+function AppShell(props) {
+  const {hide, isHidden} = props;
   const [anchorEl, setAnchorEl] = useState(null);
+  const showText = 'Show OnlineUsers';
+  const hideText = 'Hide OnlineUsers';
+  const [text, setText] = useState(hideText);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -72,6 +76,15 @@ function AppShell() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const hideAndChangeText = () => {
+    hide();
+    if (text === hideText){
+      setText(showText);
+    } else {
+      setText(hideText);
+    }
+  }
 
   const handleLogout = (firebase) => {
     handleClose();
@@ -107,6 +120,9 @@ function AppShell() {
                 <MenuItem onClick={() => handleLogout(firebase)}>
                   Logout
                 </MenuItem>
+                  <MenuItem onClick={() => hideAndChangeText()}>
+                    {text}
+                  </MenuItem>
               </Menu>
             </div>
           )}
