@@ -106,6 +106,7 @@ function AppShell(props) {
                 aria-controls="simple-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
+                style={{ cursor: "pointer" }}
               />
               <Menu
                 id="simple-menu"
