@@ -164,7 +164,7 @@ function ChatPage(props) {
 
     function hideContainer() {
         //setHidden(!isHidden);
-        if(isHidden){//hidden true
+        if (isHidden) {//hidden true
             $("#onlineUsersContainer").show();
             isHidden = false;
         } else {//visible false
@@ -499,7 +499,7 @@ function ChatPage(props) {
     return (
         <>
             <AppShell hide={hideContainer} isHidden={isHidden}/>
-            {/*<div style={{display: (isHidden ? 'block' : 'none')}}>*/}
+            <div id="wrapper">
                 <div className="onlineUsersContainer" id="onlineUsersContainer">
                     <FirebaseAuthConsumer>
                         {({user}) => (
@@ -511,27 +511,27 @@ function ChatPage(props) {
                         )}
                     </FirebaseAuthConsumer>
                 </div>
-            {/*</div>*/}
-            <div className="chatContainer">
-                <ul id="messages"/>
-                <span id="notifyTyping"/>
-                <form id="form" action="" onSubmit={(e) => submitFunction(e)}>
-                    <input type="hidden" id="user" value=""/>
-                    <input
-                        id="m"
-                        autoComplete="off"
-                        placeholder="Type your message here.."
-                        onKeyUp={() => notifyTyping()}
-                    />
-                    <input
-                        id="sendFile"
-                        onChange={selectFile}
-                        type="file"
-                        multiple
-                        accept="image/*"
-                    />
-                    <input type="submit" id="button" value="Send"/>
-                </form>
+                <div className="chatContainer">
+                    <ul id="messages"/>
+                    <span id="notifyTyping"/>
+                    <form id="form" action="" onSubmit={(e) => submitFunction(e)}>
+                        <input type="hidden" id="user" value=""/>
+                        <input
+                            id="m"
+                            autoComplete="off"
+                            placeholder="Type your message here.."
+                            onKeyUp={() => notifyTyping()}
+                        />
+                        <input
+                            id="sendFile"
+                            onChange={selectFile}
+                            type="file"
+                            multiple
+                            accept="image/*"
+                        />
+                        <input type="submit" id="button" value="Send"/>
+                    </form>
+                </div>
             </div>
         </>
     );

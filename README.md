@@ -67,13 +67,33 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 1. Download this file into your computer. This is the client side file.
 2. Download the socket io server from https://github.com/s7u4rt99/chatella_server
 3. After editing the code, to run it on your machine, firstly, run "yarn start" in this folder to open up the react app. Then, go into the server code folder and run "yarn start" to start the socket io server.
-4. Now, the react front end would connect to the socket io back and you can open new tabs and start chatting with them on your machine.
+4. Now, the react front end would connect to the socket io back-end you can open new tabs and start chatting with them on your machine.
+
+### **<u>User guide</u>**
+### ***<u>Logging in</u>***
+### ***For first-time users:***
+1. If logging in with a Google account, click 'sign in with google' and follow the prompts to login.
+2. If logging in with any other email, first sign up by entering Username, which will be the account's display name in the chat. Followed by the account's email and password which will be used in future logins.
+3. A verification email will be sent to the email that was used to sign-up. Verify the account by following the steps in the verification email, check the spam/junk folder if the mail was not received.
+4. Once verified, user will be redirected to the chat-page.
+
+### ***For returning users:***
+1. For users using Google login, user will be automatically logged in by Google if user did not log-out of the device previously. Otherwise, click 'sign in with google' and follow the prompts to login.
+2. Once user has signed-up, click 'sign in' at the bottom with 'Already have an account? sign in' to be redirected to the login page.
+3. Enter the email address and password that was used in the sign-up and click the login button.
+
+### ***<u>Chatting</u>***
+1. The list of online users will be on the left-side of the screen which represents all online users on the server, click on the user's name of the person you would like to chat with.
+
+### ***<u>Logging out</u>***
+1. Click on the avatar icon on the top-right of the screen and select the 'logout' option in the drop-down menu.
+
 
 ### ***<u>Testing</u>***
 |S/N|Test             |Steps Taken   |Expected Output|Actual Output|Remarks|
 |---|---------------------|-------|-----------|--------------|-------|
 |1|Quality Assurance (Code Review)|Reviewed each other code after we debugged or added a new feature|Understand the added code|Understand the added code|NIL|
-|2|Quality Assurance (Static Analysis)|Analysed code for unused methods or variables|Removed the unused variables / methods|Removed most unused variables / methods| Left some unused variables for debugging|
+|2|Quality Assurance (Static Analysis)|Analysed code for unused methods or variables using Intellij's IDE|Removed the unused variables / methods|Removed most unused variables / methods| Left some unused variables for debugging|
 |3|Exploratory Testing|Tested sign up page with username|Opens the chat page after signing up and displays username at the top|Opens the chat page after signing up and displays username at the top|NIL|
 |4|Exploratory Testing|Tested sign in page|Logs user in with username selected during sign up / google account name|Logs user in with username selected during sign up / google account name|NIL
 |5|Exploratory Testing|Tested log out button|Logs user out and disconnects from backend|Logs user out and disconnects from backend|NIL|
