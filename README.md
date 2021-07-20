@@ -208,7 +208,22 @@ We try out best not to complicate things in our code.
 |43|Debug|25/6/21|4|5|Stuart: Fixed sign in page + CSS bug + hosting on heroku bug <br> ZL: Fixed unique account according to google id, <br> implemented multi window multi user chat that updates simultaneously |
 |44|Hosting|26/6/21|4|2|Try to host backend and frontend on Heroku|
 |45|Debugging + Updating documentation|27/6/21|5|4|Debugged Heroku and CSS bugs, update documentation|
-|46|Updating ReadMe and filming video for MS2|28/5/21|3.5|1.5|Updating ReadMe and filming video for MS2|
+|46|Updating ReadMe and filming video for MS2|28/6/21|3.5|1.5|Updating ReadMe and filming video for MS2|
+|47|Peer review|2/7/21|1|1|Do peer review|
+|48|Peer review and improve UI|3/7/21|0|4|Try to improve the UI based on feedback given in peer review|
+|49|Try to improve UI|4/7/21|0|1|Attempt to improve UI by editting CSS|
+|50|Try to improve UI|5/7/21|0|1|Attempt to improve UI by editting CSS|
+|51|Improve UI fixed undefined bug|7/7/21|2|0|Fixed bug that caused messages to show up as undefined and crash the server|
+|52|Read about localstorage|9/7/21|0|1|Reading about saving chat data onto storage of device|
+|53|Stuart: added feature. <br> ZL: update readme and read-up |10/7/21|4|3|Stuart: Added Email verification and forgot password feature <br> ZL: Update readme and read about sending audio|
+|54|Added features and fix bugs|11/7/21|4|5|Stuart: Fixed forgot password bug & Added name bar above chat and researched about how to make video call <br> ZL: Testing email verification, implement browser notifications|
+|55|Added features and research|12/7/21|1|0|Added video call icon into name bar and researched about how to make video call|
+|56|Stuart: Fixed bug & research <br> ZL: Research|13/7/21|1|1|Stuart: Fixed bug which does not allow sending same photo twice in a row. Researched about pop up and added a video call pop up <br> ZL: Reading about hiding elements |
+|57|Added features|15/7/21|0|5|Added hiding onlineUsers container option and try to optimize it|
+|58|Working on video call feature|16/7/21|2|0|Building the video call feature|
+|59|Building feature & watching MC|17/7/21|2|1|Stuart: Working on video call(no pop-up) <br> ZL: Watch software testing MC|
+|60|Consult + watching MC|18/7/21|2|2|Consult about documentation and testing, watch MC about testing|
+|61|Watching MC & update Readme|20/7/21|0|4|Watch web-security + software test MC & update readme|
 
 
 |Total Hours|Stuart|Zheng Lin|
