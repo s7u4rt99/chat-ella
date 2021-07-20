@@ -68,29 +68,33 @@ export default function App() {
   };
 
   const handleSignup = (firebase) => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email.trim(), password)
-      .then((userCredential) => {
-        // send verification mail.
-        userCredential.user.updateProfile({ displayName: username });
-        userCredential.user.sendEmailVerification();
-        firebase.auth().signOut();
-        alert("Email sent");
-        clearInputs();
-        clearErrors();
-      })
-      .catch((err) => {
-        switch (err.code) {
-          case "auth/email-already-in-use":
-          case "auth/invalid-email":
-            setEmailError(err.message);
-            break;
-          case "auth/weak-password":
-            setPasswordError(err.message);
-            break;
-        }
-      });
+      if (!username) {
+          alert("Please fill in a username to sign up")
+      } else {
+          firebase
+              .auth()
+              .createUserWithEmailAndPassword(email.trim(), password)
+              .then((userCredential) => {
+                  // send verification mail.
+                  userCredential.user.updateProfile({displayName: username});
+                  userCredential.user.sendEmailVerification();
+                  firebase.auth().signOut();
+                  alert("Email sent");
+                  clearInputs();
+                  clearErrors();
+              })
+              .catch((err) => {
+                  switch (err.code) {
+                      case "auth/email-already-in-use":
+                      case "auth/invalid-email":
+                          setEmailError(err.message);
+                          break;
+                      case "auth/weak-password":
+                          setPasswordError(err.message);
+                          break;
+                  }
+              });
+      }
   };
 
   const handleForgetPassword = (firebase) => {
