@@ -37,11 +37,11 @@ the parties involved is kept only between the parties involved.
 ### **<u>Features and Timeline</u>**
 
 #### **Implemented Features**
-1. Implemented login page with login with google option
-2. Peer-to-peer messaging app which does not store information of chats online
-3. Log out button
-4. Unique accounts for each user based on email
-5. Ability to take photos and send to each other/ from gallery
+1. Implemented login page with login with google option.
+2. Peer-to-peer messaging app which does not store information of chats online.
+3. Log out button.
+4. Unique accounts for each user based on email, messages will be updated across different devices with the same account.
+5. Ability to take photos and send to each other/ from gallery.
 
 #### **Features to be implemented in the future**
 1. Ability to make voice/video calls (by mid July)
@@ -69,21 +69,38 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 3. After editing the code, to run it on your machine, firstly, run "yarn start" in this folder to open up the react app. Then, go into the server code folder and run "yarn start" to start the socket io server.
 4. Now, the react front end would connect to the socket io back-end you can open new tabs and start chatting with them on your machine.
 
+Directions:
+Styling: src.components.style.css
+Main Chat: src.pages.ChatPage.js
+Login: src.pages.LoginPage.js & src.App.js
+Overhead toolbar: src.components.header.AppShell.js
+Online user container of the chat-page: src.components.OnlineUsers.OnlineUsers.js
+Firebase configuration: src.components.config.firebase.js & src.index.js
+Copy of server-side(for easier testing): server.js. To use local host for testing back-end and front-end together, uncomment line 36-41 and comment out line 42-47. enter cmd yarn start
+and yarn start-page in two separate terminals.
+
 ### **<u>User guide</u>**
 ### ***<u>Logging in</u>***
 ### ***For first-time users:***
+<U>Sign up Page</U>
+![](./SignUpPage.png)
 1. If logging in with a Google account, click 'sign in with google' and follow the prompts to login.
 2. If logging in with any other email, first sign up by entering Username, which will be the account's display name in the chat. Followed by the account's email and password which will be used in future logins.
 3. A verification email will be sent to the email that was used to sign-up. Verify the account by following the steps in the verification email, check the spam/junk folder if the mail was not received.
 4. Once verified, user will be redirected to the chat-page.
 
 ### ***For returning users:***
+<U>Sign in Page</U>
+![](./SignInPage.png)
 1. For users using Google login, user will be automatically logged in by Google if user did not log-out of the device previously. Otherwise, click 'sign in with google' and follow the prompts to login.
 2. Once user has signed-up, click 'sign in' at the bottom with 'Already have an account? sign in' to be redirected to the login page.
 3. Enter the email address and password that was used in the sign-up and click the login button.
 
 ### ***<u>Chatting</u>***
-1. The list of online users will be on the left-side of the screen which represents all online users on the server, click on the user's name of the person you would like to chat with.
+<U>Chat Page (With Chat Opened & Sending Messsages)</U>
+![](./ChatPageWithMessages.png)
+1. The list of online users will be on the left-side of the screen which represents all online users on the server, click on the user's name of the person you would like to chat with(user box will be of a greyer shade).
+2. User can send text messages or pictures which can be sent by clicking the 'Choose file' button below the text-box and hit send/enter.
 
 ### ***<u>Logging out</u>***
 1. Click on the avatar icon on the top-right of the screen and select the 'logout' option in the drop-down menu.
@@ -157,8 +174,16 @@ We try out best not to complicate things in our code.
 
 <U>Chat Page (With Chat Opened & Sending Messsages)</U>
 ![](./ChatPageWithMessages.png)
-      
 
+### **<u>Limitations</u>**
+Video Call: Our original plan was to implement either sending an audio message or to implement a voice + video call feature, however, we encountered problems when trying to implement them.
+For sending audio message, we had to add in an MP3 recorder, as well as a MP3 player in the chatboxes. Recorders that we found were quite large on screen and would further clutter our UI.
+The pressure of time also made the implementation and integration of such a feature difficult and we decided that time would be better spent on documentation and testing.
+
+UI: The foundation of the app we used, designed the chat messages in a list format, and due to html and css structure its size is either fixed or grows with the size(length and breadth) of the list.
+When trying to implement an option to hide the online-users container for better usability on devices with smaller screen(ie. phones), we ran into issues where the chat container could not stretch 
+and fill the entire page, leaving a blank space of the hidden portion. Due to our implementation of the chat container and the lack of time, we decided to take out the hide online users option 
+as it does not achieve much and would actually cause the user more work to hide/show when trying to change chat.
 ### **<u>Project log</u>**
 
 |S/N|Activity             |Date   |Stuart<br>(hrs)|Zheng Lin<br>(hrs)|Remarks|
