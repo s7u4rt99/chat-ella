@@ -30,7 +30,7 @@ function ChatPage(props) {
     var $ = require("jquery");
     var globalCount = 0;
     var title = "Chatella";
-    var isHidden = false;
+    // var isHidden = false;
 
     // const socketRef = useRef()
     // const socket = io("http://localhost:4000", {
@@ -162,17 +162,17 @@ function ChatPage(props) {
         return () => socket.disconnect();
     }, []);
 
-    function hideContainer() {
-        //setHidden(!isHidden);
-        if (isHidden) {//hidden true
-            $("#onlineUsersContainer").show();
-            isHidden = false;
-        } else {//visible false
-            $("#onlineUsersContainer").hide();
-            isHidden = true;
-        }
-
-    }
+    // function hideContainer() {
+    //     //setHidden(!isHidden);
+    //     if (isHidden) {//hidden true
+    //         $("#onlineUsersContainer").show();
+    //         isHidden = false;
+    //     } else {//visible false
+    //         $("#onlineUsersContainer").hide();
+    //         isHidden = true;
+    //     }
+    //
+    // }
 
     function selectUserChatBox(element, userId, userName, userGoogleId) {
         myFriend.id = userId;
@@ -498,7 +498,7 @@ function ChatPage(props) {
 
     return (
         <>
-            <AppShell hide={hideContainer} isHidden={isHidden}/>
+            <AppShell/>
             <div id="wrapper">
                 <div className="onlineUsersContainer" id="onlineUsersContainer">
                     <FirebaseAuthConsumer>
