@@ -135,7 +135,7 @@ allowing Chatella to work.
 
 After we integrated Chatella, we added a few new features to the app. Whenever we added a new feature, we would conduct Unit Testing on it and Integration Testing after ensuring that it works
 by itself. We also conducted Regression Testing whenever a new feature has been added such as email verification, forgot password feature and photo feature. We would test the features again whenever
-a new feature has been added to ensure that the addition of the new feature did not cause any bugs in our exisiting features.
+a new feature has been added to ensure that the addition of the new feature did not introduce any bugs in our exisiting features.
 
 Lastly, after the deployment of Chatella, we conducted User Testing on our users to get valuable feedback from them on how we can improve Chatella, especially on our UI/UX. 
 We want to take the feedback and improve Chatella as much as possible before Splashdown. 
