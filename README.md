@@ -66,7 +66,7 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 
 ## **<u>User guide</u>**
 ### ***<u>Logging in</u>***
-### ***For first-time users:***
+#### ***For first-time users:***
 <U>Sign up Page</U>
 ![](./SignUpPage.png)
 1. If logging in with a Google account, click 'sign in with google' and follow the prompts to login.
@@ -74,7 +74,7 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 3. A verification email will be sent to the email that was used to sign-up. Verify the account by following the steps in the verification email, check the spam/junk folder if the mail was not received.
 4. Once verified, user will be redirected to the chat-page.
 
-### ***For returning users:***
+#### ***For returning users:***
 <U>Sign in Page</U>
 ![](./SignInPage.png)
 1. For users using Google login, user will be automatically logged in by Google if user did not log-out of the device previously. Otherwise, click 'sign in with google' and follow the prompts to login.
