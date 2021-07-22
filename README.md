@@ -117,6 +117,25 @@ Server: Follow step 2 of how to set up, our server code is found in that reposit
 Github: https://github.com/s7u4rt99/chat-ella (react app) and https://github.com/s7u4rt99/chatella-server (node js server)
 
 ### ***<u>Testing</u>***
+We conducted many testing methods on Chatella, such as Unit Testing, Integration Testing, System Testing and User Testing. 
+Throughout the development phase, we also conducted Quality Assurance Test by using Github to review each other's code whenever there were changes to the code. 
+We reviewed the code by explaining to each other what we changed/added during our weekly meetings on zoom. We felt this would be better than just looking 
+at the commits each time there was a change to the code as we may miss out some information or misinterpret the logic. 
+
+During the early development phase, we conducted some Exploratory Testing and Unit Testing. We tested each individual part of our app to check if they are functioning as expected.
+We went about these tests by simply checking whether the actual output of the tests matched the desired output which we wanted to achieve. We tested these individual units extensively
+by making sure the result was correct regardless whether the user used a correct input or not. These individual units form the foundation of our app, thus we wanted to make sure that
+they work as expected in order for our app to be successful when we started integrating the different parts together.
+
+After Exploratory and Unit Testing, we moved on to Integration Testing and System Testing. After ensuring that our different units work individually, we wanted to make sure that these
+units work together as a whole. Hence, we integrated all our different parts together, such as by merging all the different components of front end/backend together, and finally combining the
+front end and backend together. We ran some tests on the front end and backend, such as testing the connection of the user to our socket io server, the ability to send messages across to one another, as well
+as authentication, to test if our app works seamlessly. This was a difficult process as there were many bugs during the integration, but through hardwork and dedication, we managed to integrate all of them together, 
+allowing Chatella to work.
+
+Lastly, after deployment of Chatella, we conducted User Testing on our users to get valuable feedback from them on how we can improve Chatella, especially on our UI/UX. 
+We want to take the feedback and improve Chatella as much as possible before Splashdown. 
+
 |S/N|Test             |Steps Taken   |Expected Output|Actual Output|Remarks|
 |---|---------------------|-------|-----------|--------------|-------|
 |1|Quality Assurance (Code Review)|Reviewed each other code after we debugged or added a new feature|Understand the added code|Understand the added code|NIL|
@@ -169,21 +188,27 @@ Keep It Simple, Stupid
 We strive to keep our code as simple as possible to ensure that it is readable, understandable and extendable.
 We try out best not to complicate things in our code.
 
-### ***<u>Prototype</u>***
-<U>Sign in Page</U>
-![](./SignInPage.png)
+[comment]: <> (### ***<u>Prototype</u>***)
 
-<U>Sign up Page</U>
-![](./SignUpPage.png)
+[comment]: <> (<U>Sign in Page</U>)
 
-<U>Chat Page (Without Chat Opened)</U>
-![](./ChatPageWOChatOpened.png)
+[comment]: <> (![]&#40;./SignInPage.png&#41;)
 
-<U>Chat Page (With Chat Opened)</U>
-![](./ChatPageWithChatOpened.png)
+[comment]: <> (<U>Sign up Page</U>)
 
-<U>Chat Page (With Chat Opened & Sending Messsages)</U>
-![](./ChatPageWithMessages.png)
+[comment]: <> (![]&#40;./SignUpPage.png&#41;)
+
+[comment]: <> (<U>Chat Page &#40;Without Chat Opened&#41;</U>)
+
+[comment]: <> (![]&#40;./ChatPageWOChatOpened.png&#41;)
+
+[comment]: <> (<U>Chat Page &#40;With Chat Opened&#41;</U>)
+
+[comment]: <> (![]&#40;./ChatPageWithChatOpened.png&#41;)
+
+[comment]: <> (<U>Chat Page &#40;With Chat Opened & Sending Messsages&#41;</U>)
+
+[comment]: <> (![]&#40;./ChatPageWithMessages.png&#41;)
 
 ### **<u>Limitations</u>**
 Video Call: Our original plan was to implement either the ability to send audio messages or place voice/video calls. However, we encountered problems while trying to implement them.
