@@ -117,7 +117,7 @@ Server: Follow step 2 of how to set up, our server code is found in that reposit
 Github: https://github.com/s7u4rt99/chat-ella (react app) and https://github.com/s7u4rt99/chatella-server (node js server)
 
 ### ***<u>Testing</u>***
-We conducted many testing methods on Chatella, such as Unit Testing, Integration Testing, System Testing and User Testing. 
+We conducted many testing methods on Chatella, such as Unit Testing, Integration Testing, System Testing, Regression Testing and User Testing. 
 Throughout the development phase, we also conducted Quality Assurance Testing by using Github to review each other's code whenever there were changes to the code. 
 We reviewed the code by explaining to each other what we changed/added during our weekly meetings on zoom. We felt this would be better than just looking 
 at the commits each time there was a change to the code by ourselves, as we may miss out some information or misinterpret the logic. 
@@ -133,6 +133,10 @@ front end and backend together. We ran some tests on the front end and backend, 
 as authentication, to test if our app works seamlessly. This was a difficult process as there were many bugs during the integration, but through our sleepless nights and relentless dedication, we managed to integrate all of them together, 
 allowing Chatella to work.
 
+After we integrated Chatella, we added a few new features to the app. Whenever we added a new feature, we would conduct Unit Testing on it and Integration Testing after ensuring that it works
+by itself. We also conducted Regression Testing whenever a new feature has been added such as email verification, forgot password feature and photo feature. We would test the features again whenever
+a new feature has been added to ensure that the addition of the new feature did not cause any bugs in our exisiting features.
+
 Lastly, after the deployment of Chatella, we conducted User Testing on our users to get valuable feedback from them on how we can improve Chatella, especially on our UI/UX. 
 We want to take the feedback and improve Chatella as much as possible before Splashdown. 
 
@@ -140,23 +144,41 @@ We want to take the feedback and improve Chatella as much as possible before Spl
 |---|---------------------|-------|-----------|--------------|-------|
 |1|Quality Assurance (Code Review)|Reviewed each other code after we debugged or added a new feature|Understand the added code|Understand the added code|NIL|
 |2|Quality Assurance (Static Analysis)|Analysed code for unused methods or variables using Intellij's IDE|Removed the unused variables / methods|Removed most unused variables / methods| Left some unused variables for debugging|
-|3|Exploratory Testing|Tested sign up page with username|Opens the chat page after signing up and displays username at the top|Opens the chat page after signing up and displays username at the top|NIL|
-|4|Exploratory Testing|Tested sign in page|Logs user in with username selected during sign up / google account name|Logs user in with username selected during sign up / google account name|NIL
-|5|Exploratory Testing|Tested log out button|Logs user out and disconnects from backend|Logs user out and disconnects from backend|NIL|
-|6|Exploratory Testing|Tested send message button|Sends message to other user|Sends message to other user|NIL|
-|7|Exploratory Testing|Tested send file button to send photos|Ability to send photos on computer. Ability to send photos and take photos on phone|Ability to send photos on computer. Ability to send photos and take photos on phone|NIL|
-|8|Exploratory Testing|Testing the toggle between chats|Displays messages with other user which user toggled to|Displays messages with other user which user toggled to|NIL|
-|9|Unit Testing|Tested selectUserChatBox method|Opens chat with selected user and darkens the name in the online users column|Opens chat with selected user and darkens the name in the online users column|Could not integrate it with react at the start, but works fine now|
-|10|Unit Testing|Tested notifyTyping method|Notifies user that the person who he/she is talking to is typing|Notifies user that the person who he/she is talking to is typing|NIL|
-|11|Unit Testing|Tested chatNotificationCount method|Notifies user of the correct number of unread messages from other users. |Notifies user of the correct number of unread messages from other users. |NIL|
-|12|Unit Testng|Tested loadChatBox method|Correctly loads the chat box with the user in the correct order|Correctly loads the chat box with the user in the correct order|Due to async programming, it had a bug and the photos were processed slower than normal messages, thus completing last and ending at the bottom. It is fixed now.|
-|13|Integration Testing|Tested connection between react and socketIO server|Able to connect front end to server and chat with online users|Able to connect front end to server and chat with online users|Had an initial bug due to the version of socketIO which does not allow Cross-Origin Resource Sharing. Changed it to the correct version and it works.|
-|14|Integration Testing|Tested ability to send messages/photos to other users through socketIO server|Messages/Photos get sent to the correct users|Messages/Photos get sent to the correct users|NIL|
-|15|Integration Testing|Tested authentication by using firebase in react|User is able to create an account with correct username and login|User is able to create an account with correct username and login|NIL|
-|16|System Testing (Performance Testing)|Tested with multiple window single user|No change in number of users. |No change in number of users. |NIL|
-|17|System Testing (Performance Testing)|Tested with multiple windows multiple user|Chat page across different windows of sender and receiver updated after new message. |Chat page across different windows of sender and receiver updated after new message. |NIL|
-|18|System Testing (Performance Testing)|Tested with multiple users online|Users are able to chat with each other and toggle between chats|Users are able to chat with each other and toggle between chats|NIL|
-|19|System Testing (Compatibility Testing)|Tested with different OS (Windows and mac)|Interface are similar and usable|Interface are similar and usable|Have not gotten interface to look good on mobile yet, but it still works|
+|3|Exploratory Testing|Tested sign up page by signing up with email and username|Opens the chat page after signing up and displays username at the top|Opens the chat page after signing up and displays username at the top|NIL|
+|4|Exploratory Testing|Tested sign up page by signing up with email and NO username|Prompts user to type in a username|Prompts user to type in a username|NIL|
+|5|Exploratory Testing|Tested sign up page by signing up with bad email and username|Error message appears to inform user that the email was badly formatted|Error message appears to inform user that the email was badly formatted|NIL|
+|6|Exploratory Testing|Tested sign up page by signing up with email and username but with password less than 6 characters|Error message appears to inform user that password has to be longer than 6 characters|Error message appears to inform user that password has to be longer than 6 characters|NIL|
+|7|Exploratory Testing|Tested sign in page with correct email and password|Logs user in with username selected during sign up / google account name|Logs user in with username selected during sign up / google account name|NIL
+|8|Exploratory Testing|Tested sign in page with wrong password|Informs user that the password is wrong|Informs user that the password is wrong|NIL
+|9|Exploratory Testing|Tested sign in page with unregistered email|Informs user that the email does not have an account yet|Informs user that the email does not have an account yet|NIL
+|10|Exploratory Testing|Tested log out button|Logs user out and disconnects from backend|Logs user out and disconnects from backend|NIL|
+|11|Exploratory Testing|Tested send message button with non empty message|Sends message to other user|Sends message to other user|NIL|
+|12|Exploratory Testing|Tested send message button with empty message|Does not send message to other user|Does not send message to other user|NIL|
+|13|Exploratory Testing|Tested send file button to send photos|Ability to send photos on computer. Ability to send photos and take photos on phone|Ability to send photos on computer. Ability to send photos and take photos on phone|NIL|
+|14|Exploratory Testing|Testing toggle between chats|Displays messages with other user which user toggled to|Displays messages with other user which user toggled to|NIL|
+|15|Exploratory Testing|Tested email verification during signup|User receives an email by firebase to verify user's email|User receives an email by firebase to verify user's email|NIL|
+|16|Exploratory Testing|Tested forget password method which sends link to change password|Email which user keys in receives a mail by firebase with a link to change the password|Email which user keys in receives a mail by firebase with a link to change the password|NIL|
+|17|Unit Testing|Tested handleSignUp method with no missing fields|Creates an account on firebase with given email, password and username|Creates an account on firebase with given email, password and username|NIL|
+|18|Unit Testing|Tested handleSignUp method with missing password|Does not create an account on firebase, and prompts user to key in missing detail|Does not creates an account on firebase, and prompts user to key in missing detail|NIL|
+|19|Unit Testing|Tested handleSignUp method with missing email|Does not create an account on firebase, and prompts user to key in missing detail|Does not creates an account on firebase, and prompts user to key in missing detail|NIL|
+|20|Unit Testing|Tested handleSignUp method with missing username|Does not create an account on firebase, and prompts user to key in missing detail|Does not creates an account on firebase, and prompts user to key in missing detail|NIL|
+|21|Unit Testing|Tested handleLogin method with no missing fields|Logs in with given email and password|Logs in with given email and password|NIL|
+|22|Unit Testing|Tested handleLogin method with missing/wrong password|Does not log in, and prompts user to key in missing detail|Does not log in, and prompts user to key in missing detail|NIL|
+|23|Unit Testing|Tested handleLogin method with missing/wrong email|Does not log in, and prompts user to key in missing detail|Does not log in, and prompts user to key in missing detail|NIL|
+|24|Unit Testing|Tested selectUserChatBox method|Opens chat with selected user and darkens the name in the online users column|Opens chat with selected user and darkens the name in the online users column|Could not integrate it with react at the start, but works fine now|
+|25|Unit Testing|Tested notifyTyping method|Notifies user that the person who he/she is talking to is typing|Notifies user that the person who he/she is talking to is typing|NIL|
+|26|Unit Testing|Tested chatNotificationCount method|Notifies user of the correct number of unread messages from other users. |Notifies user of the correct number of unread messages from other users. |NIL|
+|27|Unit Testng|Tested loadChatBox method|Correctly loads the chat box with the user in the correct order|Correctly loads the chat box with the user in the correct order|Due to async programming, it had a bug and the photos were processed slower than normal messages, thus completing last and ending at the bottom. It is fixed now.|
+|28|Unit Testng|Tested forgotPassword method|Sends email to given email to change password|Sends email to given email to change password|NIL|
+|29|Integration Testing|Tested connection between react and socketIO server|Able to connect front end to server and chat with online users|Able to connect front end to server and chat with online users|Had an initial bug due to the version of socketIO which does not allow Cross-Origin Resource Sharing. Changed it to the correct version and it works.|
+|30|Integration Testing|Tested ability to send messages/photos to other users through socketIO server|Messages/Photos get sent to the correct users|Messages/Photos get sent to the correct users|NIL|
+|31|Integration Testing|Tested authentication by using firebase in react|User is able to create an account with username and login with the same email and password|User is able to create an account with username and login with the same email and passworf|NIL|
+|32|Integration Testing|Tested authentication with email verification by using firebase in react|User is able to create an account with username, email and password and receives verification email. User can login with the same email and password after verification|User is able to create an account with username, email and password and receives email verification. User can login with the same email and password after verification|NIL|
+|33|System Testing (Performance Testing)|Tested with multiple window single user|No change in number of users. |No change in number of users. |NIL|
+|34|System Testing (Performance Testing)|Tested with multiple windows multiple user|Chat page across different windows of sender and receiver updated after new message. |Chat page across different windows of sender and receiver updated after new message. |NIL|
+|35|System Testing (Performance Testing)|Tested with multiple users online|Users are able to chat with each other and toggle between chats|Users are able to chat with each other and toggle between chats|NIL|
+|36|System Testing (Compatibility Testing)|Tested with different OS (Windows and mac)|Interface are similar and usable|Interface are similar and usable|Have not gotten interface to look good on mobile yet, but it still works|
+|37|Regression Testing|Went through unit testing of all the methods again whenever new feature is added|All units working as supposed to|All units working as supposed to|NIL|
 
 ### ***<u>Software Engineering Principles</u>***
 **SOLID**
