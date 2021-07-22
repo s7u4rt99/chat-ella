@@ -1,12 +1,12 @@
 # Chatella
 
-### **<u>Try it out:</u>** https://chatella.herokuapp.com/
+#### **<u>Try it out:</u>** https://chatella.herokuapp.com/
 
-### **<u>Proposed Level of Achievement:</u>** Apollo 11
+#### **<u>Proposed Level of Achievement:</u>** Apollo 11
 
 A peer-to-peer(P2P) messaging app to chat with your online friends!
 
-### **<u>Motivation</u>**
+#### **<u>Motivation</u>**
 
 As Whatsapp was bought over by Facebook and changed their privacy policy,
 it highlights the power these firms who own messaging platforms have over the content being sent over their platform, should the company
@@ -22,21 +22,21 @@ So why not just remove the server in between the parties involved and make the e
 avoid the leakage of information and increase the privacy of the chat, something that can be quite rare
 nowadays.
 
-### **<u>Aim</u>**
+#### **<u>Aim</u>**
 
 We hope to develop a P2P messaging web application, which ensures that communication on the web between
 the parties involved is kept only between the parties involved.
 
-### **<u>User Stories</u>**
+#### **<u>User Stories</u>**
 
 1. As a student, I want privacy when sending and receiving my messages, so that I can feel more comfortable.
    I want to be able to message friends without the thought of people reading our messages.
 2. As a young adult, I want my private messages to remain private, so that private information such as
    controversial political views or plans for legal/illegal activities (if any) remains private.
 
-### **<u>Features and Timeline</u>**
+#### **<u>Features and Timeline</u>**
 
-#### **Implemented Features**
+##### **Implemented Features**
 1. Implemented login page with login with google option.
 2. Peer-to-peer messaging app which does not store information of chats online.
 3. Log out button.
@@ -45,28 +45,28 @@ the parties involved is kept only between the parties involved.
 6. Forget password option.
 7. Email verification during sign-up to ensure no fake emails.
 
-#### **Features to be implemented in the future**
+##### **Features to be implemented in the future**
 1. Ability to make voice/video calls (Unable to complete)
 2. Password lock supported for any chats (Unable to complete)
 3. GPS system to allow sharing of live locations (Unable to complete)
 
-### **<u>How are we different from similar platforms?</u>**
+#### **<u>How are we different from similar platforms?</u>**
 
 Our messaging app aims to follow the P2P framework where messages of users are not stored on a server but
 on each device itself, improving privacy and security of the chats.
 
-### **<u>Program Flow</u>**
+#### **<u>Program Flow</u>**
 
 
 ![ProgramFlow](./ProjectFlowMilestone1.png)
 
 
-### **<u>Tech Stack</u>**
+#### **<u>Tech Stack</u>**
 ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 
 ## **<u>User guide</u>**
-### ***<u>Logging in</u>***
-### ***For first-time users:***
+#### ***<u>Logging in</u>***
+#### ***For first-time users:***
 <U>Sign up Page</U>
 ![](./SignUpPage.png)
 1. If logging in with a Google account, click 'sign in with google' and follow the prompts to login.
@@ -74,31 +74,31 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 3. A verification email will be sent to the email that was used to sign-up. Verify the account by following the steps in the verification email, check the spam/junk folder if the mail was not received.
 4. Once verified, user will be redirected to the chat-page.
 
-### ***For returning users:***
+#### ***For returning users:***
 <U>Sign in Page</U>
 ![](./SignInPage.png)
 1. For users using Google login, user will be automatically logged in by Google if user did not log-out of the device previously. Otherwise, click 'sign in with google' and follow the prompts to login.
 2. Once user has signed-up, click 'sign in' at the bottom with 'Already have an account? sign in' to be redirected to the login page.
 3. Enter the email address and password that was used in the sign-up and click the login button.
 
-### ***<u>Chatting</u>***
+#### ***<u>Chatting</u>***
 <U>Chat Page (With Chat Opened & Sending Messsages)</U>
 ![](./ChatPageWithMessages.png)
 1. The list of online users will be on the left-side of the screen which represents all online users on the server, click on the user's name of the person you would like to chat with(user box will be of a greyer shade).
 2. User can send text messages or pictures which can be sent by clicking the 'Choose file' button below the text-box and hit send/enter.
 
-### ***<u>Logging out</u>***
+#### ***<u>Logging out</u>***
 1. Click on the avatar icon on the top-right of the screen and select the 'logout' option in the drop-down menu.
 
 ## **<u>Developer guide</u>**
-### ***<u>How to set up</u>***
+#### ***<u>How to set up</u>***
 1. Download this file into your computer. This is the client side file.
 2. Download the socket io server from https://github.com/s7u4rt99/chatella-server
 3. To run the app on your machine after editing the code, uncomment lines 36-41 and comment out line 42-47 from Chat.js. Next, run "yarn start" in this directory to open up the react app. 
    Subsequently, go into the directory which contains the server code and run "yarn start" to start the socket io server.
 4. Now, the react front end would connect to the socket io back-end you can open new tabs and start chatting with them on your machine.
 
-### ***<u>Directions:</u>***
+#### ***<u>Directions:</u>***
 Styling: src/components/style.css
 
 Main Chat: src/pages/ChatPage.js
@@ -113,10 +113,10 @@ Firebase configuration: src/components/config/firebase.js & src/index.js
 
 Server: Follow step 2 of how to set up, our server code is found in that repository
 
-### ***<u>Source Control</u>***
+#### ***<u>Source Control</u>***
 Github: https://github.com/s7u4rt99/chat-ella (react app) and https://github.com/s7u4rt99/chatella-server (node js server)
 
-### ***<u>Testing</u>***
+#### ***<u>Testing</u>***
 |S/N|Test             |Steps Taken   |Expected Output|Actual Output|Remarks|
 |---|---------------------|-------|-----------|--------------|-------|
 |1|Quality Assurance (Code Review)|Reviewed each other code after we debugged or added a new feature|Understand the added code|Understand the added code|NIL|
@@ -139,7 +139,7 @@ Github: https://github.com/s7u4rt99/chat-ella (react app) and https://github.com
 |18|System Testing (Performance Testing)|Tested with multiple users online|Users are able to chat with each other and toggle between chats|Users are able to chat with each other and toggle between chats|NIL|
 |19|System Testing (Compatibility Testing)|Tested with different OS (Windows and mac)|Interface are similar and usable|Interface are similar and usable|Have not gotten interface to look good on mobile yet, but it still works|
 
-### ***<u>Software Engineering Principles</u>***
+#### ***<u>Software Engineering Principles</u>***
 **SOLID**
 
 <U>S  -   SRP (Single Responsibility Principle)</U>
@@ -169,7 +169,7 @@ Keep It Simple, Stupid
 We strive to keep our code as simple as possible to ensure that it is readable, understandable and extendable.
 We try out best not to complicate things in our code.
 
-### ***<u>Prototype</u>***
+#### ***<u>Prototype</u>***
 <U>Sign in Page</U>
 ![](./SignInPage.png)
 
@@ -185,7 +185,7 @@ We try out best not to complicate things in our code.
 <U>Chat Page (With Chat Opened & Sending Messsages)</U>
 ![](./ChatPageWithMessages.png)
 
-### **<u>Limitations</u>**
+#### **<u>Limitations</u>**
 Video Call: Our original plan was to implement either the ability to send audio messages or place voice/video calls. However, we encountered problems while trying to implement them.
 For sending audio message, we had to add in an MP3 recorder, as well as a MP3 player in the chatboxes. Recorders that we found were quite large on screen and would further clutter our UI.
 For voice/video calls, the integration of using WebRTC and socket was an issue. Whenever we placed a video call, a new socket connection would be formed which caused many complications.
@@ -200,7 +200,7 @@ GPS System: We feel that currently, there are other more important features whic
 Additionally, we felt that because our app is currently more suited for computers and not mobile devices yet, implementing the GPS system was not high on our priority list as our users would usually be 
 at one spot and not moving around.
 
-### **<u>Project log</u>**
+#### **<u>Project log</u>**
 
 |S/N|Activity             |Date   |Stuart<br>(hrs)|Zheng Lin<br>(hrs)|Remarks|
 |---|---------------------|-------|-----------|--------------|-------|
@@ -271,7 +271,7 @@ at one spot and not moving around.
 |-----------|------|---------|
 |226.5|119|107.5|
 
-### **<u>References/Sources</u>**
+#### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
 
 https://codepen.io/B99-AHMAD/pen/ExZeypj
