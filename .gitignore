@@ -3,5 +3,4 @@
 /.node_modules
 /.chatella2
 /yarn-error.log
-/.chatella_server/.idea
-/.chatella_server/.node_modules
+
