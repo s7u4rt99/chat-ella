@@ -144,9 +144,9 @@ We want to take the feedback and improve Chatella as much as possible before Spl
 |---|---------------------|-------|-----------|--------------|-------|
 |1|Quality Assurance (Code Review)|Reviewed each other code after we debugged or added a new feature|Understand the added code|Understand the added code|NIL|
 |2|Quality Assurance (Static Analysis)|Analysed code for unused methods or variables using Intellij's IDE|Removed the unused variables / methods|Removed most unused variables / methods| Left some unused variables for debugging|
-|3|Exploratory Testing|Tested sign up page by signing up with email and username|Opens the chat page after signing up and displays username at the top|Opens the chat page after signing up and displays username at the top|NIL|
-|4|Exploratory Testing|Tested sign up page by signing up with email and NO username|Prompts user to type in a username|Prompts user to type in a username|NIL|
-|5|Exploratory Testing|Tested sign up page by signing up with bad email and username|Error message appears to inform user that the email was badly formatted|Error message appears to inform user that the email was badly formatted|NIL|
+|3|Exploratory Testing|Tested sign up page by signing up with email, password and username|Opens the chat page after signing up and displays username at the top|Opens the chat page after signing up and displays username at the top|NIL|
+|4|Exploratory Testing|Tested sign up page by signing up with email, password and NO username|Prompts user to type in a username|Prompts user to type in a username|NIL|
+|5|Exploratory Testing|Tested sign up page by signing up with password, username and bad email|Error message appears to inform user that the email was badly formatted|Error message appears to inform user that the email was badly formatted|NIL|
 |6|Exploratory Testing|Tested sign up page by signing up with email and username but with password less than 6 characters|Error message appears to inform user that password has to be longer than 6 characters|Error message appears to inform user that password has to be longer than 6 characters|NIL|
 |7|Exploratory Testing|Tested sign in page with correct email and password|Logs user in with username selected during sign up / google account name|Logs user in with username selected during sign up / google account name|NIL
 |8|Exploratory Testing|Tested sign in page with wrong password|Informs user that the password is wrong|Informs user that the password is wrong|NIL
