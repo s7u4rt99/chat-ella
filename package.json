@@ -28,7 +28,6 @@
   },
   "scripts": {
     "start": "yarn start-page",
-    "start-server": "node server.js",
     "start-page": "set HTTPS=TRUE && node_modules/.bin/react-scripts start",
     "build": "node_modules/.bin/react-scripts build",
     "test": "node_modules/.bin/react-scripts test",
