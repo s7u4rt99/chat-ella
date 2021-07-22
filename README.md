@@ -42,11 +42,13 @@ the parties involved is kept only between the parties involved.
 3. Log out button.
 4. Unique accounts for each user based on email, messages will be updated across different devices with the same account.
 5. Ability to take photos and send to each other/ from gallery.
+6. Forget password option.
+7. Email verification during sign-up to ensure no fake emails.
 
 #### **Features to be implemented in the future**
-1. Ability to make voice/video calls (by mid July)
-2. Password lock supported for any chats (by mid July)
-3. GPS system to allow sharing of live locations (by end July)
+1. Ability to make voice/video calls (Unable to complete)
+2. Password lock supported for any chats (Unable to complete)
+3. GPS system to allow sharing of live locations (Unable to complete)
 
 ### **<u>How are we different from similar platforms?</u>**
 
@@ -62,24 +64,7 @@ on each device itself, improving privacy and security of the chats.
 ### **<u>Tech Stack</u>**
 ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 
-### **<u>Developer guide</u>**
-### ***<u>How to set up</u>***
-1. Download this file into your computer. This is the client side file.
-2. Download the socket io server from https://github.com/s7u4rt99/chatella_server
-3. After editing the code, to run it on your machine, firstly, run "yarn start" in this folder to open up the react app. Then, go into the server code folder and run "yarn start" to start the socket io server.
-4. Now, the react front end would connect to the socket io back-end you can open new tabs and start chatting with them on your machine.
-
-Directions:
-Styling: src.components.style.css
-Main Chat: src.pages.ChatPage.js
-Login: src.pages.LoginPage.js & src.App.js
-Overhead toolbar: src.components.header.AppShell.js
-Online user container of the chat-page: src.components.OnlineUsers.OnlineUsers.js
-Firebase configuration: src.components.config.firebase.js & src.index.js
-Copy of server-side(for easier testing): server.js. To use local host for testing back-end and front-end together, uncomment line 36-41 and comment out line 42-47. enter cmd yarn start
-and yarn start-page in two separate terminals.
-
-### **<u>User guide</u>**
+## **<u>User guide</u>**
 ### ***<u>Logging in</u>***
 ### ***For first-time users:***
 <U>Sign up Page</U>
@@ -105,6 +90,31 @@ and yarn start-page in two separate terminals.
 ### ***<u>Logging out</u>***
 1. Click on the avatar icon on the top-right of the screen and select the 'logout' option in the drop-down menu.
 
+## **<u>Developer guide</u>**
+### ***<u>How to set up</u>***
+1. Download this file into your computer. This is the client side file.
+2. Download the socket io server from https://github.com/s7u4rt99/chatella-server
+3. To run the app on your machine after editing the code, uncomment lines 36-41 and comment out line 42-47 from Chat.js. Next, run "yarn start" in this directory to open up the react app. 
+   Subsequently, go into the directory which contains the server code and run "yarn start" to start the socket io server.
+4. Now, the react front end would connect to the socket io back-end you can open new tabs and start chatting with them on your machine.
+
+### ***<u>Directions:</u>***
+Styling: src/components/style.css
+
+Main Chat: src/pages/ChatPage.js
+
+Login: src/pages/LoginPage.js & src/App.js
+
+Overhead toolbar: src/components/header/AppShell.js
+
+Online user container of the chat-page: src/components/OnlineUsers/OnlineUsers.js
+
+Firebase configuration: src/components/config/firebase.js & src/index.js
+
+Server: Follow step 2 of how to set up, our server code is found in that repository
+
+### ***<u>Source Control</u>***
+Github: https://github.com/s7u4rt99/chat-ella (react app) and https://github.com/s7u4rt99/chatella-server (node js server)
 
 ### ***<u>Testing</u>***
 |S/N|Test             |Steps Taken   |Expected Output|Actual Output|Remarks|
@@ -176,14 +186,20 @@ We try out best not to complicate things in our code.
 ![](./ChatPageWithMessages.png)
 
 ### **<u>Limitations</u>**
-Video Call: Our original plan was to implement either sending an audio message or to implement a voice + video call feature, however, we encountered problems when trying to implement them.
+Video Call: Our original plan was to implement either the ability to send audio messages or place voice/video calls. However, we encountered problems while trying to implement them.
 For sending audio message, we had to add in an MP3 recorder, as well as a MP3 player in the chatboxes. Recorders that we found were quite large on screen and would further clutter our UI.
-The pressure of time also made the implementation and integration of such a feature difficult and we decided that time would be better spent on documentation and testing.
+For voice/video calls, the integration of using WebRTC and socket was an issue. Whenever we placed a video call, a new socket connection would be formed which caused many complications.
+Additionally, the pressure of time also made the implementation and integration of these features difficult and we decided that time would be better spent on documentation and testing.
 
 UI: The foundation of the app we used, designed the chat messages in a list format, and due to html and css structure its size is either fixed or grows with the size(length and breadth) of the list.
 When trying to implement an option to hide the online-users container for better usability on devices with smaller screen(ie. phones), we ran into issues where the chat container could not stretch 
 and fill the entire page, leaving a blank space of the hidden portion. Due to our implementation of the chat container and the lack of time, we decided to take out the hide online users option 
 as it does not achieve much and would actually cause the user more work to hide/show when trying to change chat.
+
+GPS System: We feel that currently, there are other more important features which have not been implemented yet, such as voice and video calls, thus we decided to leave this out for now. 
+Additionally, we felt that because our app is currently more suited for computers and not mobile devices yet, implementing the GPS system was not high on our priority list as our users would usually be 
+at one spot and not moving around.
+
 ### **<u>Project log</u>**
 
 |S/N|Activity             |Date   |Stuart<br>(hrs)|Zheng Lin<br>(hrs)|Remarks|
