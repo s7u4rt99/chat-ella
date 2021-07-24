@@ -315,10 +315,10 @@ at one spot and not moving around.
 |58|Working on video call feature|16/7/21|2|0|Building the video call feature|
 |59|Building feature & watching MC|17/7/21|2|1|Stuart: Working on video call(no pop-up) <br> ZL: Watch software testing MC|
 |60|Consult + watching MC|18/7/21|2|2|Consult about documentation and testing, watch MC about testing|
-|61|Stuart: create google form and redeploy app. ZL: watching MC & update Readme|20/7/21|1|4|ZL: Watch web-security + software test MC & update readme|
+|61|Stuart: create google form and redeploy app <br> ZL: watching MC & update Readme|20/7/21|1|4|ZL: Watch web-security + software test MC & update readme|
 |62|Added limitations to Readme|21/7/21|0|1|and some content to developers guide|
 |63|Removed feature & bug fixes|22/7/21|1|0.5|removed 'hide onlineusers' feature. some bug fixes & redeployed|
-|64|Readme|23/7/21|3|1|worked on readme for MS3|
+|64|Updated Readme|23/7/21|3|1|worked on readme for MS3|
 
 
 |Total Hours|Stuart|Zheng Lin|
