@@ -1,15 +1,10 @@
 import OnlineUsers from "../components/OnlineUsers/OnlineUsers";
 import "../components/style.css";
-// import {FirebaseAuthConsumer} from "@react-firebase/auth";
+
 import io from "socket.io-client";
-import {useEffect, dangerouuslySetInnerHTML, useState, useRef} from "react";
+import {useEffect} from "react";
 import AppShell from "../components/Header/AppShell";
 import {FirebaseAuthConsumer} from "@react-firebase/auth";
-
-import ScriptTag from "react-script-tag";
-// import {appendChatMessage, loginMe, selectUserChatBox} from "../chat";
-// import openSocket from "socket.io-client";
-// import React, { useEffect, useRef } from "react"
 // import io from "socket.io-client"
 // import {
 //     clearChatNotificationCount, loadChatBox,
@@ -18,9 +13,7 @@ import ScriptTag from "react-script-tag";
 //     updateChatNotificationCount
 // } from "../chat";
 
-function ChatPage(props) {
-    // const {user} = props;
-    // const {loginMe, submitFunction, notifyTyping} = props
+function ChatPage() {
     // const [file, setFile] = useState()
     let file = null;
     var allChatMessages = [];
@@ -59,7 +52,7 @@ function ChatPage(props) {
         });
 
         // Listen to notifyTyping event to notify that the friend id typying a message
-        socket.on("notifyTyping", function (sender, recipient) {
+        socket.on("notifyTyping", function (sender) {
             if (myFriend.googleId === sender.googleId) {
                 $("#notifyTyping").text(sender.name + " is typing ...");
             }
@@ -232,8 +225,7 @@ function ChatPage(props) {
     };
 
     const updateChat = (message) => {
-        var origin = message.origin; // socket that sent the message
-        var destination = message.destination;
+
         if (
             message.senderGoogleId === myUser.googleId &&
             message.sender.includes(message.origin)

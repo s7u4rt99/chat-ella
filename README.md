@@ -135,7 +135,11 @@ allowing Chatella to work.
 
 After we integrated Chatella, we added a few new features to the app. Whenever we added a new feature, we would conduct Unit Testing on it and Integration Testing after ensuring that it works
 by itself. We also conducted Regression Testing whenever a new feature has been added such as email verification, forgot password feature and photo feature. We would test the features again whenever
-a new feature has been added to ensure that the addition of the new feature did not introduce any bugs in our exisiting features.
+a new feature has been added to ensure that the addition of the new feature did not introduce any bugs in our existing features.
+
+We mainly employed manual testing instead of automatic testing as automatic testing for the general operation and UI would require too much work(tedious and time consuming)
+and the time spent can be better used towards more manual testing, debugging and adding more features. Manual testing on the full-stack deployment would also allow us more opportunity to
+identify any bugs that might show up after back and front end deployment.
 
 Lastly, after the deployment of Chatella, we conducted User Testing on our users to get valuable feedback from them on how we can improve Chatella, especially on our UI/UX. 
 We want to take the feedback and improve Chatella as much as possible before Splashdown. 
@@ -154,7 +158,7 @@ We want to take the feedback and improve Chatella as much as possible before Spl
 |10|Exploratory Testing|Tested log out button|Logs user out and disconnects from backend|Logs user out and disconnects from backend|NIL|
 |11|Exploratory Testing|Tested send message button with non empty message|Sends message to other user|Sends message to other user|NIL|
 |12|Exploratory Testing|Tested send message button with empty message|Does not send message to other user|Does not send message to other user|NIL|
-|13|Exploratory Testing|Tested send file button to send photos|Ability to send photos on computer. Ability to send photos and take photos on phone|Ability to send photos on computer. Ability to send photos and take photos on phone|NIL|
+|13|Exploratory Testing|Tested send file button to send photos|Ability to send photos and display on computer. Ability to send photos, take photos and display  on phone|Ability to send photos and display on computer. Ability to send photos, take photos and display  on phone|NIL|
 |14|Exploratory Testing|Testing toggle between chats|Displays messages with other user which user toggled to|Displays messages with other user which user toggled to|NIL|
 |15|Exploratory Testing|Tested email verification during signup|User receives an email by firebase to verify user's email|User receives an email by firebase to verify user's email|NIL|
 |16|Exploratory Testing|Tested forget password method which sends link to change password|Email which user keys in receives a mail by firebase with a link to change the password|Email which user keys in receives a mail by firebase with a link to change the password|NIL|
@@ -166,7 +170,7 @@ We want to take the feedback and improve Chatella as much as possible before Spl
 |22|Unit Testing|Tested handleLogin method with missing/wrong password|Does not log in, and prompts user to key in missing detail|Does not log in, and prompts user to key in missing detail|NIL|
 |23|Unit Testing|Tested handleLogin method with missing/wrong email|Does not log in, and prompts user to key in missing detail|Does not log in, and prompts user to key in missing detail|NIL|
 |24|Unit Testing|Tested selectUserChatBox method|Opens chat with selected user and darkens the name in the online users column|Opens chat with selected user and darkens the name in the online users column|Could not integrate it with react at the start, but works fine now|
-|25|Unit Testing|Tested notifyTyping method|Notifies user that the person who he/she is talking to is typing|Notifies user that the person who he/she is talking to is typing|NIL|
+|25|Unit Testing|Tested notifyTyping method|Notifies user that the person who he/she is talking to is typing even when on multiple devices|Notifies user that the person who he/she is talking to is typing even when on multiple devices|NIL|
 |26|Unit Testing|Tested chatNotificationCount method|Notifies user of the correct number of unread messages from other users. |Notifies user of the correct number of unread messages from other users. |NIL|
 |27|Unit Testng|Tested loadChatBox method|Correctly loads the chat box with the user in the correct order|Correctly loads the chat box with the user in the correct order|Due to async programming, it had a bug and the photos were processed slower than normal messages, thus completing last and ending at the bottom. It is fixed now.|
 |28|Unit Testng|Tested forgotPassword method|Sends email to given email to change password|Sends email to given email to change password|NIL|
@@ -311,12 +315,15 @@ at one spot and not moving around.
 |58|Working on video call feature|16/7/21|2|0|Building the video call feature|
 |59|Building feature & watching MC|17/7/21|2|1|Stuart: Working on video call(no pop-up) <br> ZL: Watch software testing MC|
 |60|Consult + watching MC|18/7/21|2|2|Consult about documentation and testing, watch MC about testing|
-|61|Watching MC & update Readme|20/7/21|0|4|Watch web-security + software test MC & update readme|
+|61|Stuart: create google form and redeploy app. ZL: watching MC & update Readme|20/7/21|1|4|ZL: Watch web-security + software test MC & update readme|
+|62|Added limitations to Readme|21/7/21|0|1|and some content to developers guide|
+|63|Removed feature & bug fixes|22/7/21|1|0.5|removed 'hide onlineusers' feature. some bug fixes & redeployed|
+|64|Readme|23/7/21|3|1|worked on readme for MS3|
 
 
 |Total Hours|Stuart|Zheng Lin|
 |-----------|------|---------|
-|226.5|119|107.5|
+|274|135|139| (as of 23/7)
 
 ### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
