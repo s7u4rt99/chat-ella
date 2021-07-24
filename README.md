@@ -184,6 +184,22 @@ We want to take the feedback and improve Chatella as much as possible before Spl
 |36|System Testing (Compatibility Testing)|Tested with different OS (Windows and mac)|Interface are similar and usable|Interface are similar and usable|Have not gotten interface to look good on mobile yet, but it still works|
 |37|Regression Testing|Went through unit testing of all the methods again whenever new feature is added|All units working as supposed to|All units working as supposed to|NIL|
 
+### ***<u>User Testing and Feedback</u>***
+For user testing, we made a Google form and asked our friends to help us give their opinions, we got a total of 16 responses, the low response could be attributed to a bad timing (ie. back to phase 2 and the RV tragedy news)
+which damaged their will to do anything, or the long load time for our app could have dissuaded them from completing the survey.
+
+From our results, 87.5% of participants rated the privacy of their chat to be of highest importance(lv.5 out of 5), while only 12.5% rated it as of a high importance(lv.4 out of 5). No one rated it any lower.
+We can see that privacy is a large area of concern for youngsters nowadays.
+
+50% of participants rated our UI to be very intuitive(lv.5 out of 5), like they have been using it for decades, while 43.8% rated it to be quite intuitive(lv.4 out of 5) and only 6.3% rated it as having some difficulty using(lv.3 out of 5).
+Overall, our UI is quite intuitive for new users to use and does not require much explanation to use.
+
+Major suggestions to improve the UI include making it more mobile-friendly and to improve the look of the site.
+
+Major features that were recommended for future success of the site are to include sending messages to offline users, ability to add friends and to form a friends list, see past messages and to be able to send stickers and other type of documents
+81.3% of participants said they would use Chatella over other messaging apps like Whatsapp or Telegrams if the features they suggested and more were added in the future, those that would not use Chatella over other messaging app cited
+the user count as a problem as a messaging app would require large scale adoption by the population to be attractive and feasible for use.
+
 ### ***<u>Software Engineering Principles</u>***
 **SOLID**
 
@@ -246,6 +262,11 @@ UI: The foundation of the app we used, designed the chat messages in a list form
 When trying to implement an option to hide the online-users container for better usability on devices with smaller screen(ie. phones), we ran into issues where the chat container could not stretch 
 and fill the entire page, leaving a blank space of the hidden portion. Due to our implementation of the chat container and the lack of time, we decided to take out the hide online users option 
 as it does not achieve much and would actually cause the user more work to hide/show when trying to change chat.
+
+Local Storage of past chat messages: Our original approach was to use the Javascript built in function of localStorage, however during the construction of such a feature, we found out that the function was not able to save such
+a large array and that localStorage was only able to maintain memory while the page was still open and so would not be portable across multiple devices and would not be permanently saved onto the local disk. We thought of saving the 
+chat history on the server-side but then that would defeat the purpose of the app which would be that the server side would not keep any of the chat information. We also found that a web app cannot write directly to local disk and that
+the only way to do was to make an app instead of a web-app. Due to the lack of time and the time needed to port over to an app form for our application, we decided to pushback this feature even though it is quite important.
 
 GPS System: We feel that currently, there are other more important features which have not been implemented yet, such as voice and video calls, thus we decided to leave this out for now. 
 Additionally, we felt that because our app is currently more suited for computers and not mobile devices yet, implementing the GPS system was not high on our priority list as our users would usually be 
