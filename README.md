@@ -311,7 +311,7 @@ at one spot and not moving around.
 |29|Debugging|10/6/21|1|2|Stuart: Fixed refresh bug <br> ZL: Trying to debug onclick by converting jquery into react|
 |30|Added logout and Appshell|12/6/21|0|1|Added an appshell to chatpage with logout functionality|
 |31|Debug and added login feature|13/6/21|3|3|Stuart: Added login with email and password feature <br> ZL:Debug appshell overlap & attempt to disconnect socket during logout |
-|32|Debugging|14/6/21|3|3|Debugging multi-connection bug|
+|32|Debugging|14/6/21|4|3|Debugging multi-connection bug|
 |33|Debug & consult|15/6/21|4.5|4|Stuart: Double-connection bug <br> ZL: Login and selectUserChatBox bug |
 |34|Debug|16/6/21|2|2|Fixed double connection and still debugging selectUserChatBox bug|
 |35|Debug|17/6/21|2|2|Try to debug selectUserChatBox bug|
@@ -335,7 +335,7 @@ at one spot and not moving around.
 |53|Stuart: added feature. <br> ZL: update readme and read-up |10/7/21|4|3|Stuart: Added Email verification and forgot password feature <br> ZL: Update readme and read about sending audio|
 |54|Added features and fix bugs|11/7/21|4|5|Stuart: Fixed forgot password bug & Added name bar above chat and researched about how to make video call <br> ZL: Testing email verification, implement browser notifications|
 |55|Added features and research|12/7/21|1|0|Added video call icon into name bar and researched about how to make video call|
-|56|Stuart: Fixed bug & research <br> ZL: Research|13/7/21|1|1|Stuart: Fixed bug which does not allow sending same photo twice in a row. Researched about pop up and added a video call pop up <br> ZL: Reading about hiding elements |
+|56|Stuart: Fixed bug & research <br> ZL: Research|13/7/21|3|1|Stuart: Fixed bug which does not allow sending same photo twice in a row. Researched about pop up and added a video call pop up <br> ZL: Reading about hiding elements |
 |57|Added features|15/7/21|0|5|Added hiding onlineUsers container option and try to optimize it|
 |58|Working on video call feature|16/7/21|2|0|Building the video call feature|
 |59|Building feature & watching MC|17/7/21|2|1|Stuart: Working on video call(no pop-up) <br> ZL: Watch software testing MC|
@@ -348,7 +348,7 @@ at one spot and not moving around.
 
 |Total Hours|Stuart|Zheng Lin|
 |-----------|------|---------|
-|274|143|139| (as of 23/7)
+|274|146|139| (as of 23/7)
 
 ### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
