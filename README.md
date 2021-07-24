@@ -190,15 +190,19 @@ which damaged their will to do anything, or the long load time for our app could
 
 From our results, 87.5% of participants rated the privacy of their chat to be of highest importance(lv.5 out of 5), while only 12.5% rated it as of a high importance(lv.4 out of 5). No one rated it any lower.
 We can see that privacy is a large area of concern for youngsters nowadays.
+![](./PrivacyResults.png)
+
 
 50% of participants rated our UI to be very intuitive(lv.5 out of 5), like they have been using it for decades, while 43.8% rated it to be quite intuitive(lv.4 out of 5) and only 6.3% rated it as having some difficulty using(lv.3 out of 5).
 Overall, our UI is quite intuitive for new users to use and does not require much explanation to use.
+![](./IntuitiveResults.png)
 
 Major suggestions to improve the UI include making it more mobile-friendly and to improve the look of the site.
 
 Major features that were recommended for future success of the site are to include sending messages to offline users, ability to add friends and to form a friends list, see past messages and to be able to send stickers and other type of documents
 81.3% of participants said they would use Chatella over other messaging apps like Whatsapp or Telegrams if the features they suggested and more were added in the future, those that would not use Chatella over other messaging app cited
 the user count as a problem as a messaging app would require large scale adoption by the population to be attractive and feasible for use.
+![](./PortingResults.png)
 
 ### ***<u>Software Engineering Principles</u>***
 **SOLID**
