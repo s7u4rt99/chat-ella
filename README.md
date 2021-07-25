@@ -67,7 +67,7 @@ ReactJS, ExpressJS, NodeJS, HTML, CSS, SocketIO, Firebase
 ## **<u>User guide</u>**
 
 ### ***<u>What is Chatella?</u>***
-Chatella is a messaging web application, different from other messaging applications out there. 
+Chatella is a messaging web application, different from others out there. 
 The main difference between us and other messaging apps like Facebook and Telegram is that
 we are using a system where our user's chats are not stored in a central database, unlike theirs.
 This ensures that all our user's chats are private, and no one (not even us) would be able to read their messages. 
