@@ -357,7 +357,7 @@ at one spot and not moving around.
 
 |Total Hours|Stuart|Zheng Lin|
 |-----------|------|---------|
-|292|149|142.5| 
+|291.5|149|142.5| 
 
 ### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
