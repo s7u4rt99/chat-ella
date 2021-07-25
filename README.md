@@ -353,11 +353,11 @@ at one spot and not moving around.
 |63|Removed feature & bug fixes|22/7/21|1|0.5|removed 'hide onlineusers' feature. some bug fixes & redeployed|
 |64|Updated Readme|23/7/21|3|1|worked on readme for MS3|
 |65|Updated Readme & video recording|24/7/21|2|3|Updated time-log, testing and user testing & record video for MS3|
-|66|Upload video and submit final MS3|25/7/21|0.5|0.5|Final changes to time-log and submission of MS3|
+|66|Upload video and submit final MS3|25/7/21|1|0.5|Final changes to time-log and submission of MS3|
 
 |Total Hours|Stuart|Zheng Lin|
 |-----------|------|---------|
-|291|148.5|142.5| 
+|292|149|142.5| 
 
 ### **<u>References/Sources</u>**
 https://javabeginnerstutorial.com/javascript-2/chatbox-a-peer-to-peer-chat-application/
